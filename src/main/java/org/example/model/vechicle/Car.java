@@ -9,7 +9,7 @@ public class Car extends Vehicle {
     private int trunkCapacity;
     private int hp;
 
-    public Car(VehicleType vehicleType, String regPlate, int numberOfSeats, int trunkCapacity, int hp) {
+    public Car(int numberOfSeats, int trunkCapacity, int hp) {
         super();
         this.numberOfSeats = numberOfSeats;
         this.trunkCapacity = trunkCapacity;
