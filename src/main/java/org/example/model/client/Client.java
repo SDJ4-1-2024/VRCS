@@ -1,4 +1,4 @@
 package org.example.model.client;
 
-public record Client(String firstName, String lastName, String phoneNumber, String password, ClientType type) {
+public record Client(String phoneNumber, String password, ClientType type) {
 }

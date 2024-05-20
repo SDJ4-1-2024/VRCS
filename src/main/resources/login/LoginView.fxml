@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.LoginViewController" alignment="CENTER" spacing="10">
+    <Label text="Login/Registration"/>
+    <TextField fx:id="phoneNumberField" promptText="Phone Number"/>
+    <PasswordField fx:id="passwordField" promptText="Password"/>
+    <ComboBox fx:id="clientTypeComboBox">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Personal"/>
+                <String fx:value="Company"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Button text="Sign In" onAction="#handleLogin"/>
+    <Button text="Sign Up" onAction="#handleSignUp"/>
+</VBox>
