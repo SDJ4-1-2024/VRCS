@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane fx:controller="org.example.view.VehicleViewController"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="10" vgap="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Make:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="makeField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Brand:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="brandField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Registration Plate:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="registrationPlateField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Vehicle Type:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="vehicleTypeField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Price Per Day:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="pricePerDayField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Rented:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField fx:id="rentedField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="Booked:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="bookedField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Button text="Save" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+</GridPane>
