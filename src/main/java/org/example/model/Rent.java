@@ -1,5 +1,6 @@
 package org.example.model;
 
+import org.example.model.client.Client;
 import org.example.model.vehicle.Vehicle;
 
 import java.time.LocalDate;

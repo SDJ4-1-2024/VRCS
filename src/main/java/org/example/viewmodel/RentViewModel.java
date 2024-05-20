@@ -2,7 +2,7 @@ package org.example.viewmodel;
 
 import javafx.beans.property.*;
 import org.example.model.Rent;
-import org.example.model.Client;
+import org.example.model.client.Client;
 import org.example.model.vehicle.Vehicle;
 
 import java.time.LocalDate;
