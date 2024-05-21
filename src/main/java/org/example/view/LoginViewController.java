@@ -8,11 +8,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.view.admin.AdminViewController;
-import org.example.view.client.ClientViewController;
 import org.example.viewmodel.login.LoginViewModel;
 import org.example.viewmodel.admin.AdminViewModel;
 import org.example.viewmodel.client.ClientViewModel;
+import org.example.view.admin.AdminViewController;
+import org.example.view.client.ClientViewController;
 
 import java.io.IOException;
 

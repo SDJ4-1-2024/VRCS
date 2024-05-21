@@ -6,14 +6,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.client.ClientViewController" alignment="CENTER" spacing="10" prefHeight="300">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
-
-    <Label text="Available Vehicles"/>
-    <ListView fx:id="vehicleListView"/>
-    <Button text="Rent Vehicle" onAction="#rentVehicle"/>
-    <Label text="My Bookings"/>
-    <ListView fx:id="bookingListView"/>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.client.ClientViewController" alignment="CENTER" spacing="10">
+    <Label text="Client View"/>
+    <Button text="Book Vehicle" onAction="#goToVehicleTypeSelection"/>
 </VBox>
+

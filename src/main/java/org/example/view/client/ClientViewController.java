@@ -1,30 +1,33 @@
 package org.example.view.client;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.example.viewmodel.client.ClientViewModel;
 
+import java.io.IOException;
+
 public class ClientViewController {
-
-    @FXML
-    private ListView<String> vehicleListView;
-    @FXML
-    private ListView<String> bookingListView;
-
     private ClientViewModel viewModel;
 
     public void setViewModel(ClientViewModel viewModel) {
         this.viewModel = viewModel;
-
-        vehicleListView.setItems(viewModel.getAvailableVehicles());
-        bookingListView.setItems(viewModel.getBookings());
     }
 
     @FXML
-    private void rentVehicle() {
-        String selectedVehicle = vehicleListView.getSelectionModel().getSelectedItem();
-        if (selectedVehicle != null) {
-            viewModel.rentVehicle(selectedVehicle);
+    private void goToVehicleTypeSelection() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VehicleTypeSelectionView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Select Vehicle Type");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

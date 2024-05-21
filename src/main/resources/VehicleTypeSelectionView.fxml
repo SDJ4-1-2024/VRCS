@@ -1,0 +1,19 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.VehicleTypeSelectionController" alignment="CENTER" spacing="10">
+    <Label text="Select Vehicle Type"/>
+    <ComboBox fx:id="vehicleTypeComboBox">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Car"/>
+                <String fx:value="Van"/>
+                <String fx:value="Trailer"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Button text="Next" onAction="#goToDateRangeSelection"/>
+</VBox>
