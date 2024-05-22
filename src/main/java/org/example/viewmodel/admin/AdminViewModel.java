@@ -2,40 +2,24 @@ package org.example.viewmodel.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.example.model.Booking;
 
 public class AdminViewModel {
-
-    private ObservableList<String> vehicles = FXCollections.observableArrayList();
-    private ObservableList<String> bookings = FXCollections.observableArrayList();
+    private ObservableList<Booking> bookings;
 
     public AdminViewModel() {
-        // Initialize with some data
-        vehicles.addAll("Car 1", "Car 2", "Van 1", "Trailer 1");
+        // Initialize with some dummy data or fetch from the database
+        bookings = FXCollections.observableArrayList();
+        // Example:
+        // bookings.add(new Booking(...));
     }
 
-    public ObservableList<String> getVehicles() {
-        return vehicles;
-    }
-
-    public ObservableList<String> getBookings() {
+    public ObservableList<Booking> getBookings() {
         return bookings;
     }
 
-    public void addVehicle(String vehicle) {
-        vehicles.add(vehicle);
-        // Notify server
-        // ...
-    }
-
-    public void removeVehicle(String vehicle) {
-        vehicles.remove(vehicle);
-        // Notify server
-        // ...
-    }
-
-    public void removeBooking(String booking) {
+    public void removeBooking(Booking booking) {
         bookings.remove(booking);
-        // Notify server
-        // ...
+        // Add logic to remove from the database if necessary
     }
 }
