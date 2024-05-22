@@ -24,7 +24,7 @@ public class ClientHandler implements Runnable {
             String message;
             while ((message = in.readLine()) != null) {
                 System.out.println("Received: " + message);
-                // Handle the message and send a response
+                
                 out.println("Response: " + message);
             }
         } catch (IOException e) {

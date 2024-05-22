@@ -34,14 +34,14 @@ public class AvailableVehiclesController {
     }
 
     private void loadAvailableVehicles() {
-        // This should be replaced with actual data fetching logic
+        
         List<Vehicle> availableVehicles = fetchAvailableVehicles(vehicleType, startDate, endDate);
         ObservableList<Vehicle> observableList = FXCollections.observableArrayList(availableVehicles);
         availableVehiclesTable.setItems(observableList);
     }
 
     private List<Vehicle> fetchAvailableVehicles(VehicleType vehicleType, LocalDate startDate, LocalDate endDate) {
-        // Placeholder for actual data fetching logic
+        
         List<Vehicle> vehicles = new ArrayList<>();
         vehicles.add(new Car("Toyota", "Corolla", "ABC123", vehicleType, 50, 5, 450, 150));
         vehicles.add(new Car("Honda", "Civic", "XYZ789", vehicleType, 55, 5, 400, 182));
@@ -52,13 +52,13 @@ public class AvailableVehiclesController {
     private void bookVehicle() {
         Vehicle selectedVehicle = availableVehiclesTable.getSelectionModel().getSelectedItem();
         if (selectedVehicle != null) {
-            // Booking logic here
+            
         }
     }
 
     @FXML
     private void cancel() {
-        // Go back to the previous view
+        
         Stage stage = (Stage) availableVehiclesTable.getScene().getWindow();
         stage.close();
     }
