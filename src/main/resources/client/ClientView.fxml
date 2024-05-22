@@ -6,8 +6,19 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.client.ClientViewController" alignment="CENTER" spacing="10">
     <Label text="Client View"/>
     <Button text="Book Vehicle" onAction="#goToVehicleTypeSelection"/>
+    <Label text="Your Bookings"/>
+    <TableView fx:id="bookingsTable">
+        <columns>
+            <TableColumn fx:id="vehicleColumn" text="Vehicle"/>
+            <TableColumn fx:id="startDateColumn" text="Start Date"/>
+            <TableColumn fx:id="endDateColumn" text="End Date"/>
+        </columns>
+    </TableView>
+    <Button text="Remove Selected Booking" onAction="#removeBooking"/>
 </VBox>
 
