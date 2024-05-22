@@ -11,7 +11,7 @@ public class LoginViewModel {
 
     public LoginViewModel() {
         clients = new HashMap<>();
-        // Add example admin client
+
         clients.put("adminPhone", new Client("adminPhone", "adminPass", ClientType.ADMIN));
         clients.put("12345", new Client("12345", "qwerty", ClientType.PERSONAL));
     }

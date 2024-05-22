@@ -9,7 +9,7 @@ public class AdminViewModel {
     private ObservableList<String> bookings = FXCollections.observableArrayList();
 
     public AdminViewModel() {
-        // Initialize with some data
+        
         vehicles.addAll("Car 1", "Car 2", "Van 1", "Trailer 1");
     }
 
@@ -23,19 +23,19 @@ public class AdminViewModel {
 
     public void addVehicle(String vehicle) {
         vehicles.add(vehicle);
-        // Notify server
-        // ...
+        
+        
     }
 
     public void removeVehicle(String vehicle) {
         vehicles.remove(vehicle);
-        // Notify server
-        // ...
+        
+        
     }
 
     public void removeBooking(String booking) {
         bookings.remove(booking);
-        // Notify server
-        // ...
+        
+        
     }
 }
