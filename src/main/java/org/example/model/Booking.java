@@ -6,13 +6,13 @@ import org.example.model.vehicle.Vehicle;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Rent {
+public class Booking {
     private LocalDate startDate;
     private LocalDate endDate;
     private Vehicle vehicle;
     private Client client;
 
-    public Rent(LocalDate startDate, LocalDate endDate, Vehicle vehicle, Client client) {
+    public Booking(LocalDate startDate, LocalDate endDate, Vehicle vehicle, Client client) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.vehicle = vehicle;
