@@ -11,14 +11,5 @@
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.admin.AdminViewController" alignment="CENTER" spacing="10">
     <Label text="Admin View"/>
     <Button text="Book Vehicle" onAction="#goToVehicleTypeSelection"/>
-    <Label text="All Bookings"/>
-    <TableView fx:id="bookingsTable">
-        <columns>
-            <TableColumn fx:id="clientColumn" text="Client"/>
-            <TableColumn fx:id="vehicleColumn" text="Vehicle"/>
-            <TableColumn fx:id="startDateColumn" text="Start Date"/>
-            <TableColumn fx:id="endDateColumn" text="End Date"/>
-        </columns>
-    </TableView>
-    <Button text="Remove Selected Booking" onAction="#removeBooking"/>
+    <Button text="Manage Bookings" onAction="#openBookingsView"/>
 </VBox>

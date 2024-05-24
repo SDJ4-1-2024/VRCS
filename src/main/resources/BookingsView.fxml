@@ -1,0 +1,21 @@
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.BookingsViewController" alignment="CENTER" spacing="10">
+<Label text="Bookings"/>
+<TableView fx:id="bookingsTableView">
+    <columns>
+        <TableColumn fx:id="clientColumn" text="Client Phone Number"/>
+        <TableColumn fx:id="vehicleColumn" text="Vehicle Registration Plate"/>
+        <TableColumn fx:id="vehicleTypeColumn" text="Vehicle Type"/>
+        <TableColumn fx:id="startDateColumn" text="Start Date"/>
+        <TableColumn fx:id="endDateColumn" text="End Date"/>
+    </columns>
+</TableView>
+<Button text="Add" onAction="#handleAdd"/>
+<Button text="Edit" onAction="#handleEdit"/>
+<Button text="Remove" onAction="#handleRemove"/>
+</VBox>
+
