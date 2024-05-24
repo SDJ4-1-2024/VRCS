@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.example.model.Booking;
 import org.example.viewmodel.admin.AdminViewModel;
 
 import java.io.IOException;
@@ -49,4 +46,19 @@ public class AdminViewController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void openVehiclesView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ManageVehiclesView.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Manage Vehicles");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

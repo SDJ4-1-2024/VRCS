@@ -1,5 +1,6 @@
 package org.example.view;
 
+import javafx.beans.property.Property;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.example.viewmodel.VehicleViewModel;
@@ -15,8 +16,6 @@ public class VehicleViewController {
     @FXML
     private TextField vehicleTypeField;
     @FXML
-    private TextField pricePerDayField;
-    @FXML
     private TextField rentedField;
     @FXML
     private TextField bookedField;
@@ -29,9 +28,6 @@ public class VehicleViewController {
         makeField.textProperty().bindBidirectional(viewModel.makeProperty());
         brandField.textProperty().bindBidirectional(viewModel.brandProperty());
         registrationPlateField.textProperty().bindBidirectional(viewModel.registrationPlateProperty());
-        vehicleTypeField.textProperty().bind(viewModel.vehicleTypeProperty().asString());
-        pricePerDayField.textProperty().bind(viewModel.pricePerDayProperty().asString());
-        rentedField.textProperty().bind(viewModel.rentedProperty().asString());
-        bookedField.textProperty().bind(viewModel.bookedProperty().asString());
+        vehicleTypeField.textProperty().bindBidirectional((Property<String>) viewModel.vehicleTypeProperty().asString());
     }
 }
