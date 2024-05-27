@@ -8,7 +8,7 @@
 
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.client.ClientViewController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.client.ClientViewController" alignment="CENTER" spacing="10" prefHeight="300" prefWidth="300">
     <Label text="Client View"/>
     <Button text="Book Vehicle" onAction="#goToVehicleTypeSelection"/>
     <Label text="Your Bookings"/>

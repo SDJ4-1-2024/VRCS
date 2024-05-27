@@ -1,4 +1,4 @@
-package org.example.view;
+package org.example.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.model.vehicle.Car;
+import org.example.model.vehicle.CarBuilder;
 import org.example.model.vehicle.Vehicle;
 import org.example.model.vehicle.VehicleType;
 import org.example.viewmodel.ManageVehicleViewModel;
@@ -55,8 +55,8 @@ public class ManageVehiclesViewController {
         // Placeholder method to simulate loading vehicles
         // Replace with actual data retrieval logic
         return List.of(
-                new Car("Toyota", "Corolla", "REG001", VehicleType.CAR, 50, 5, 500, 150),
-                new Car("Honda", "Civic", "REG002", VehicleType.CAR, 55, 5, 450, 140));
+                new CarBuilder().setMake("Toyota").setBrand("Corolla").setRegistrationPlate("REG001").setVehicleType(VehicleType.CAR).setPricePerDay(50).setNumberOfSeats(5).setTrunkCapacity(500).setHp(150).createCar(),
+                new CarBuilder().setMake("Honda").setBrand("Civic").setRegistrationPlate("REG002").setVehicleType(VehicleType.CAR).setPricePerDay(55).setNumberOfSeats(5).setTrunkCapacity(450).setHp(140).createCar());
     }
 
     @FXML

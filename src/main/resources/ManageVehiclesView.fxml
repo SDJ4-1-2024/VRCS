@@ -3,7 +3,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.Label?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.ManageVehiclesViewController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.ManageVehiclesViewController" alignment="CENTER" spacing="10">
     <Label text="Vehicles to manage"/>
     <TableView fx:id="vehiclesTableView">
         <columns>

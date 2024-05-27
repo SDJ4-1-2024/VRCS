@@ -1,4 +1,4 @@
-package org.example.view.admin;
+package org.example.controller.admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,19 +1,21 @@
-package org.example.view;
+package org.example.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import org.example.controller.admin.AdminViewController;
 import org.example.model.Booking;
-import org.example.model.client.Client;
-import org.example.model.client.ClientType;
-import org.example.model.vehicle.Car;
-import org.example.model.vehicle.VehicleType;
+import org.example.repository.BookingsRepository;
 import org.example.viewmodel.BookingViewModel;
 
-import java.time.LocalDate;
+import java.io.IOException;
 import java.util.List;
 
 public class BookingsViewController {
@@ -41,27 +43,30 @@ public class BookingsViewController {
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
 
-        // Load bookings data here
-        loadBookings();
+        BookingsRepository bookingsRepository = new BookingsRepository();
+        prepareBookings(bookingsRepository.loadBookings());
     }
 
-    private void loadBookings() {
-        // Example data, replace with actual data loading logic
-        // Assume getBookings() returns a list of Booking objects
-        for (Booking booking : getBookings()) {
+    private void prepareBookings(List<Booking> bookings) {
+        for (Booking booking : bookings) {
             bookingData.add(new BookingViewModel(booking));
         }
         bookingsTableView.setItems(bookingData);
     }
 
-    private List<Booking> getBookings() {
-        // Placeholder method to simulate loading bookings
-        return List.of(new Booking(LocalDate.of(2024, 1, 1), LocalDate.of(2024, 1, 10), new Car("Toyota", "Corolla", "REG001", VehicleType.CAR, 50, 5, 500, 150), new Client("123456789", ClientType.PERSONAL )));
-    }
-
     @FXML
     private void handleAdd() {
-        // Logic to add a booking
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VehicleTypeSelectionView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Select Vehicle Type");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

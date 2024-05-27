@@ -1,4 +1,4 @@
-package org.example.view;
+package org.example.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +8,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.model.client.ClientType;
+import org.example.model.vehicle.VehicleType;
 import org.example.viewmodel.login.LoginViewModel;
 import org.example.viewmodel.admin.AdminViewModel;
 import org.example.viewmodel.client.ClientViewModel;
-import org.example.view.admin.AdminViewController;
-import org.example.view.client.ClientViewController;
+import org.example.controller.admin.AdminViewController;
+import org.example.controller.client.ClientViewController;
 
 import java.io.IOException;
 
@@ -24,6 +26,11 @@ public class LoginViewController {
 
     public void setViewModel(LoginViewModel viewModel) {
         this.viewModel = viewModel;
+    }
+
+    @FXML
+    public void initialize() {
+        clientTypeComboBox.getSelectionModel().select(ClientType.PERSONAL.name());
     }
 
     @FXML
