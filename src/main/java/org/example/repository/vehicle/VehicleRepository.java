@@ -168,4 +168,18 @@ public class VehicleRepository {
         }
         return trailers;
     }
+
+    public Optional<Integer> prepareVehicleIdByRegPlate(String registrationPlate) {
+        String query = "SELECT id FROM vehicles where registration_plate='" + registrationPlate+"'";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                 return Optional.of(rs.getInt("id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
 }

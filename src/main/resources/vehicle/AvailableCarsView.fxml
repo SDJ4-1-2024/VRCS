@@ -3,9 +3,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.Label?>
+
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.AvailableCarsController" alignment="CENTER" spacing="10">
     <Label text="Available Cars"/>
-    <TableView fx:id="carViewModelTableView">
+    <TableView fx:id="availableCarsTable">
         <columns>
             <TableColumn fx:id="makeColumn" text="Make"/>
             <TableColumn fx:id="brandColumn" text="Brand"/>

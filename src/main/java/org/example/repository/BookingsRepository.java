@@ -64,5 +64,19 @@ public class BookingsRepository {
         }
         return Optional.empty();
     }
+
+    public void saveBooking(Date startDate, Date endDate, int carId, int clientId) {
+        String query = "INSERT INTO bookings (start_date, end_date, vehicle_id, client_id) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setDate(1, startDate);
+            stmt.setDate(2, endDate);
+            stmt.setInt(3, carId);
+            stmt.setInt(4, clientId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

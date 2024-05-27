@@ -8,18 +8,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.model.vehicle.Car;
-import org.example.model.vehicle.Vehicle;
 import org.example.model.vehicle.VehicleType;
+import org.example.repository.BookingsRepository;
+import org.example.repository.ClientRepository;
 import org.example.repository.vehicle.VehicleRepository;
-import org.example.viewmodel.vehicle.CarViewModel;
+import org.example.util.LocalDateConverter;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.prefs.Preferences;
 
 public class AvailableCarsController {
-
-    @FXML
-    private TableView<CarViewModel> carViewModelTableView;
 
     @FXML
     private TableView<Car> availableCarsTable;
@@ -43,29 +42,24 @@ public class AvailableCarsController {
     private VehicleType vehicleType;
     private LocalDate startDate;
     private LocalDate endDate;
-    private ObservableList<CarViewModel> availableCarsData = FXCollections.observableArrayList();
+    private ObservableList<Car> availableCarsData = FXCollections.observableArrayList();
 
-
-    private void prepareAvailableCars(List<Car> availableCars) {
-        for (Car car : availableCars) {
-            availableCarsData.add(new CarViewModel(car));
-        }
-        carViewModelTableView.setItems(availableCarsData);
-    }
+    VehicleRepository vehicleRepository;
+    ClientRepository clientRepository;
 
     @FXML
-    private void bookCar() {
-        Car selectedVehicle = availableCarsTable.getSelectionModel().getSelectedItem();
-        if (selectedVehicle != null) {
-            System.out.println(selectedVehicle.getTrunkCapacity());
-        }
-    }
+    public void initialize() {
+        makeColumn.setCellValueFactory(new PropertyValueFactory<>("make"));
+        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        registrationPlateColumn.setCellValueFactory(new PropertyValueFactory<>("registrationPlate"));
+        vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
+        pricePerDayColumn.setCellValueFactory(new PropertyValueFactory<>("pricePerDay"));
+        numberOfSeats.setCellValueFactory(new PropertyValueFactory<>("numberOfSeats"));
+        trunkCapacity.setCellValueFactory(new PropertyValueFactory<>("trunkCapacity"));
+        hp.setCellValueFactory(new PropertyValueFactory<>("hp"));
 
-    @FXML
-    private void cancel() {
-
-        Stage stage = (Stage) availableCarsTable.getScene().getWindow();
-        stage.close();
+        vehicleRepository = new VehicleRepository();
+        clientRepository = new ClientRepository();
     }
 
     public void setDetails(VehicleType vehicleType, LocalDate startDate, LocalDate endDate) {
@@ -76,17 +70,33 @@ public class AvailableCarsController {
     }
 
     private void loadAvailableVehicles() {
+        List<Car> availableCars = vehicleRepository.loadAvailableCarsInTimePeriodRange(startDate, endDate, vehicleType);
+        prepareAvailableCars(availableCars);
+    }
 
-        makeColumn.setCellValueFactory(new PropertyValueFactory<>("make"));
-        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        registrationPlateColumn.setCellValueFactory(new PropertyValueFactory<>("registrationPlate"));
-        vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
-        pricePerDayColumn.setCellValueFactory(new PropertyValueFactory<>("pricePerDay"));
-        numberOfSeats.setCellValueFactory(new PropertyValueFactory<>("numberOfSeats"));
-        trunkCapacity.setCellValueFactory(new PropertyValueFactory<>("trunkCapacity"));
-        hp.setCellValueFactory(new PropertyValueFactory<>("hp"));
+    private void prepareAvailableCars(List<Car> availableCars) {
+        availableCarsData.clear();
+        availableCarsData.addAll(availableCars);
+        availableCarsTable.setItems(availableCarsData);
+    }
 
-        VehicleRepository vehicleRepository = new VehicleRepository();
-        prepareAvailableCars(vehicleRepository.loadAvailableCarsInTimePeriodRange(startDate, endDate, vehicleType));
+    @FXML
+    private void bookCar() {
+        Car selectedVehicle = availableCarsTable.getSelectionModel().getSelectedItem();
+        if (selectedVehicle != null) {
+            BookingsRepository bookingRepository = new BookingsRepository();
+            int carId = vehicleRepository.prepareVehicleIdByRegPlate(selectedVehicle.getRegistrationPlate()).orElseThrow();
+            String phone = Preferences.userRoot().get("phone", null);
+            int clientId = clientRepository.prepareClientIdByPhoneNumber(phone).orElseThrow();
+            bookingRepository.saveBooking(LocalDateConverter.convertToDatabaseColumn(startDate),
+                    LocalDateConverter.convertToDatabaseColumn(endDate), carId,clientId);
+        }
+    }
+
+
+    @FXML
+    private void cancel() {
+        Stage stage = (Stage) availableCarsTable.getScene().getWindow();
+        stage.close();
     }
 }
