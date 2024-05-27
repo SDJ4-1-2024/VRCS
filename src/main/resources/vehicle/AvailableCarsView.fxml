@@ -3,17 +3,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.Label?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.AvailableVehiclesController" alignment="CENTER" spacing="10">
-    <Label text="Available Vehicles"/>
-    <TableView fx:id="availableVehiclesTable">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.AvailableCarsController" alignment="CENTER" spacing="10">
+    <Label text="Available Cars"/>
+    <TableView fx:id="carViewModelTableView">
         <columns>
             <TableColumn fx:id="makeColumn" text="Make"/>
             <TableColumn fx:id="brandColumn" text="Brand"/>
             <TableColumn fx:id="registrationPlateColumn" text="Registration Plate"/>
             <TableColumn fx:id="vehicleTypeColumn" text="Vehicle Type"/>
             <TableColumn fx:id="pricePerDayColumn" text="Price Per Day"/>
+            <TableColumn fx:id="numberOfSeats" text="Number of Seats"/>
+            <TableColumn fx:id="trunkCapacity" text="Trunk Capacity"/>
+            <TableColumn fx:id="hp" text="HP"/>
         </columns>
     </TableView>
-    <Button text="Book Selected Vehicle" onAction="#bookVehicle"/>
+    <Button text="Book Selected Car" onAction="#bookCar"/>
     <Button text="Cancel" onAction="#cancel"/>
 </VBox>

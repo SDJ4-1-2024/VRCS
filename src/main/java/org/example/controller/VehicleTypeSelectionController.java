@@ -1,17 +1,24 @@
-package org.example.view;
+package org.example.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.model.vehicle.VehicleType;
+import org.example.repository.BookingsRepository;
 
 import java.io.IOException;
 
 public class VehicleTypeSelectionController {
     @FXML private ComboBox<String> vehicleTypeComboBox;
+
+    @FXML
+    public void initialize() {
+        vehicleTypeComboBox.getSelectionModel().select(VehicleType.CAR.name());
+    }
 
     @FXML
     private void goToDateRangeSelection() {

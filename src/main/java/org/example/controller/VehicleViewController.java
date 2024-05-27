@@ -1,4 +1,4 @@
-package org.example.view;
+package org.example.controller;
 
 import javafx.beans.property.Property;
 import javafx.fxml.FXML;

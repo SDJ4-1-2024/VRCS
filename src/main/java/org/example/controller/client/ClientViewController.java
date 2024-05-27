@@ -1,4 +1,4 @@
-package org.example.view.client;
+package org.example.controller.client;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

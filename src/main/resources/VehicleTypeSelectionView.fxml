@@ -4,14 +4,14 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Label?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.view.VehicleTypeSelectionController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.VehicleTypeSelectionController" alignment="CENTER" spacing="10" prefHeight="300" prefWidth="300">
     <Label text="Select Vehicle Type"/>
     <ComboBox fx:id="vehicleTypeComboBox">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Car"/>
-                <String fx:value="Van"/>
-                <String fx:value="Trailer"/>
+                <String fx:value="CAR"/>
+                <String fx:value="VAN"/>
+                <String fx:value="TRAILER"/>
             </FXCollections>
         </items>
     </ComboBox>

@@ -1,20 +1,28 @@
-package org.example.view;
+package org.example.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.example.model.vehicle.Car;
+import org.example.model.Booking;
+import org.example.model.vehicle.CarBuilder;
 import org.example.model.vehicle.Vehicle;
 import org.example.model.vehicle.VehicleType;
+import org.example.repository.BookingsRepository;
+import org.example.repository.vehicle.VehicleRepository;
+import org.example.viewmodel.VehicleViewModel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AvailableVehiclesController {
+
+    @FXML
+    private TableView<VehicleViewModel> vehicleViewModelTableView;
     @FXML private TableView<Vehicle> availableVehiclesTable;
     @FXML private TableColumn<Vehicle, String> makeColumn;
     @FXML private TableColumn<Vehicle, String> brandColumn;
@@ -43,8 +51,8 @@ public class AvailableVehiclesController {
     private List<Vehicle> fetchAvailableVehicles(VehicleType vehicleType, LocalDate startDate, LocalDate endDate) {
         
         List<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Car("Toyota", "Corolla", "ABC123", vehicleType, 50, 5, 450, 150));
-        vehicles.add(new Car("Honda", "Civic", "XYZ789", vehicleType, 55, 5, 400, 182));
+        vehicles.add(new CarBuilder().setMake("Toyota").setBrand("Corolla").setRegistrationPlate("ABC123").setVehicleType(vehicleType).setPricePerDay(50).setNumberOfSeats(5).setTrunkCapacity(450).setHp(150).createCar());
+        vehicles.add(new CarBuilder().setMake("Honda").setBrand("Civic").setRegistrationPlate("XYZ789").setVehicleType(vehicleType).setPricePerDay(55).setNumberOfSeats(5).setTrunkCapacity(400).setHp(182).createCar());
         return vehicles;
     }
 
