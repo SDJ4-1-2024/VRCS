@@ -1,5 +1,6 @@
 package org.example.repository.vehicle;
 
+import javafx.print.Collation;
 import org.example.model.vehicle.*;
 import org.example.util.DatabaseUtil;
 import org.example.util.LocalDateConverter;
@@ -7,6 +8,7 @@ import org.example.util.LocalDateConverter;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +40,7 @@ public class VehicleRepository {
     }
 
     private Vehicle prepareCompleteVehicle(ResultSet rs) throws SQLException {
+        Optional<Vehicle> vehicle = Optional.empty();
         int idOb = rs.getInt("id");
         String make = rs.getString("make");
         String brand = rs.getString("brand");
@@ -56,12 +59,12 @@ public class VehicleRepository {
             Optional<Trailer> trailerInit = trailerRepository.prepareTrailerById(idOb, make, brand, registrationPlate, pricePerDay);
             return trailerInit.orElseThrow();
         }
-        return null;
+        return vehicle.orElseThrow();
     }
 
     public List<Vehicle> loadAvailableVehiclesInTimePeriodRange(LocalDate startDate, LocalDate endDate, VehicleType vehicleType) {
         String query = prepareQuery(startDate, endDate, vehicleType);
-        List<Vehicle> vehicles = new ArrayList<>();
+        List<Vehicle> vehicles = new ArrayList<>(Collections.emptyList());
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {

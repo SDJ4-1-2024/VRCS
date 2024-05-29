@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.example.controller.RefreshableBookingsController;
 import org.example.model.vehicle.Trailer;
 import org.example.model.vehicle.Vehicle;
 import org.example.model.vehicle.VehicleType;
@@ -53,6 +54,7 @@ public class AvailableTrailersController {
     ClientRepository clientRepository;
 
     public TextField phoneTextField;
+    private RefreshableBookingsController refreshableBookingsController;
 
     @FXML
     public void initialize() {
@@ -108,6 +110,7 @@ public class AvailableTrailersController {
                 bookingRepository.saveBooking(LocalDateConverter.convertToDatabaseColumn(startDate),
                         LocalDateConverter.convertToDatabaseColumn(endDate), trailerId, clientId);
                 PopUpUtil.popUpInfo("Booking success", selectedVehicle.getMake() + " " + selectedVehicle.getBrand() + " has been booked for: " + startDate + " to " + endDate);
+                refreshableBookingsController.refreshBookings();
                 closeOrCancel();
             }
         }
@@ -117,5 +120,9 @@ public class AvailableTrailersController {
     private void closeOrCancel() {
         Stage stage = (Stage) availableTrailersTable.getScene().getWindow();
         stage.close();
+    }
+
+    public void setRefreshableBookingsController(RefreshableBookingsController refreshableBookingsController) {
+        this.refreshableBookingsController = refreshableBookingsController;
     }
 }

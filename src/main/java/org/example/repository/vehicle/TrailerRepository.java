@@ -34,7 +34,7 @@ public class TrailerRepository {
     }
 
     public void saveTrailer(Trailer trailer, int vehicleId) {
-        String query = "INSERT INTO Trailer (vehicle_id, trunk_space_height, trunk_space_width, carrying_capacity) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO trailers (vehicle_id, trunk_space_height, trunk_space_width, carrying_capacity) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
