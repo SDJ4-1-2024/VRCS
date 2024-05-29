@@ -6,6 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
+import org.example.controller.vehicle.available.AvailableCarsController;
+import org.example.controller.vehicle.available.AvailableTrailersController;
+import org.example.controller.vehicle.available.AvailableVansController;
 import org.example.model.vehicle.VehicleType;
 
 import java.io.IOException;
@@ -47,7 +50,7 @@ public class DateRangeSelectionController {
     }
 
     private void prepareCarView(LocalDate startDate, LocalDate endDate) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/AvailableCarsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/available/AvailableCarsView.fxml"));
         Parent root = loader.load();
         AvailableCarsController controller = loader.getController();
         controller.setDetails(vehicleType, startDate, endDate);
@@ -56,18 +59,18 @@ public class DateRangeSelectionController {
         stage.setScene(new Scene(root));
     }
     private void prepareVanView(LocalDate startDate, LocalDate endDate) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/AvailableVansView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/available/AvailableVansView.fxml"));
         Parent root = loader.load();
-        AvailableVehiclesController controller = loader.getController();
+        AvailableVansController controller = loader.getController();
         controller.setDetails(vehicleType, startDate, endDate);
 
         Stage stage = (Stage) startDatePicker.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
     private void prepareTrailerView(LocalDate startDate, LocalDate endDate) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/AvailableTrailerView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/available/AvailableTrailersView.fxml"));
         Parent root = loader.load();
-        AvailableVehiclesController controller = loader.getController();
+        AvailableTrailersController controller= loader.getController();
         controller.setDetails(vehicleType, startDate, endDate);
 
         Stage stage = (Stage) startDatePicker.getScene().getWindow();

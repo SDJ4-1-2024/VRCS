@@ -12,6 +12,18 @@ public class Trailer extends Vehicle {
         this.carryingCapacity = carryingCapacity;
     }
 
+    public void setTrunkSpaceHeight(int trunkSpaceHeight) {
+        this.trunkSpaceHeight = trunkSpaceHeight;
+    }
+
+    public void setTrunkSpaceWidth(int trunkSpaceWidth) {
+        this.trunkSpaceWidth = trunkSpaceWidth;
+    }
+
+    public void setCarryingCapacity(int carryingCapacity) {
+        this.carryingCapacity = carryingCapacity;
+    }
+
     public int getTrunkSpaceHeight() {
         return trunkSpaceHeight;
     }

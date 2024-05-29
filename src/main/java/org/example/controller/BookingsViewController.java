@@ -10,13 +10,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.example.controller.admin.AdminViewController;
-import org.example.model.Booking;
-import org.example.repository.BookingsRepository;
+import org.example.service.BookingsService;
 import org.example.viewmodel.BookingViewModel;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 
 public class BookingsViewController {
 
@@ -35,22 +33,20 @@ public class BookingsViewController {
 
     private ObservableList<BookingViewModel> bookingData = FXCollections.observableArrayList();
 
+    private final BookingsService bookingsService = new BookingsService();
+
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         clientColumn.setCellValueFactory(new PropertyValueFactory<>("clientPhoneNumber"));
         vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleRegistrationPlate"));
         vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
-
-        BookingsRepository bookingsRepository = new BookingsRepository();
-        prepareBookings(bookingsRepository.loadBookings());
+        setBookings();
     }
 
-    private void prepareBookings(List<Booking> bookings) {
-        for (Booking booking : bookings) {
-            bookingData.add(new BookingViewModel(booking));
-        }
+    private void setBookings(){
+        bookingData = bookingsService.prepareBookings();
         bookingsTableView.setItems(bookingData);
     }
 
@@ -76,6 +72,9 @@ public class BookingsViewController {
 
     @FXML
     private void handleRemove() {
-        // Logic to remove a booking
+        BookingViewModel selectedBooking = bookingsTableView.getSelectionModel().getSelectedItem();
+        if (bookingsService.isRemoved(selectedBooking)) {
+            bookingData.remove(selectedBooking);
+        }
     }
 }

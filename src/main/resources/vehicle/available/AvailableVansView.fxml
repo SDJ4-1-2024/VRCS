@@ -1,0 +1,24 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.available.AvailableVansController" alignment="CENTER" spacing="10">
+    <Label text="Available Vans"/>
+    <TableView fx:id="availableVansTable">
+        <columns>
+            <TableColumn fx:id="makeColumn" text="Make"/>
+            <TableColumn fx:id="brandColumn" text="Brand"/>
+            <TableColumn fx:id="registrationPlateColumn" text="Registration Plate"/>
+            <TableColumn fx:id="vehicleTypeColumn" text="Vehicle Type"/>
+            <TableColumn fx:id="pricePerDayColumn" text="Price Per Day"/>
+            <TableColumn fx:id="trunkSpaceHeightColumn" text="Trunk Space Height"/>
+            <TableColumn fx:id="trunkSpaceWidthColumn" text="Trunk Space Width"/>
+            <TableColumn fx:id="carryingCapacityColumn" text="Carrying Capacity"/>
+            <TableColumn fx:id="hpColumn" text="HP"/>
+        </columns>
+    </TableView>
+    <TextField fx:id="phoneTextField" promptText="Enter client's phone number if booking for client" visible="false"/>
+    <Button text="Book Selected Van" onAction="#bookVan"/>
+    <Button text="Cancel" onAction="#closeOrCancel"/>
+</VBox>
+

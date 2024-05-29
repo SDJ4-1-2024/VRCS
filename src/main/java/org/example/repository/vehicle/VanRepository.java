@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class VanRepository {
     public Optional<Van> prepareVanById(int id, String make, String brand, String registrationPlate, int pricePerDay) {
-        String query = "SELECT * FROM van where vehicle_id=" + id;
+        String query = "SELECT * FROM vans where vehicle_id=" + id;
         Optional<Van> van = Optional.empty();
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -31,5 +31,23 @@ public class VanRepository {
             e.printStackTrace();
         }
         return van;
+    }
+
+    public void saveVan(Van van, int vehicleId) {
+        String query = "INSERT INTO Van (vehicle_id, trunk_space_height, trunk_space_width, carrying_capacity, hp) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, vehicleId);
+            preparedStatement.setInt(2, van.getTrunkSpaceHeight());
+            preparedStatement.setInt(3, van.getTrunkSpaceWidth());
+            preparedStatement.setInt(4, van.getCarryingCapacity());
+            preparedStatement.setInt(5, van.getHp());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

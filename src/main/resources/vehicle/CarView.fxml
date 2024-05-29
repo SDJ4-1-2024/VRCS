@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.CarViewController" alignment="CENTER" spacing="10">
+    <Label text="Manage Cars"/>
+    <TableView fx:id="carTable">
+        <columns>
+            <TableColumn fx:id="makeColumn" text="Make"/>
+            <TableColumn fx:id="brandColumn" text="Brand"/>
+            <TableColumn fx:id="registrationPlateColumn" text="Registration Plate"/>
+            <TableColumn fx:id="numberOfSeatsColumn" text="Number of Seats"/>
+            <TableColumn fx:id="trunkCapacityColumn" text="Trunk Capacity"/>
+            <TableColumn fx:id="hpColumn" text="Horsepower"/>
+            <TableColumn fx:id="pricePerDayColumn" text="Price Per Day"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <Button text="Remove Selected Car" onAction="#removeCar"/>
+        <Button text="Add Car" onAction="#addCar"/>
+    </HBox>
+</VBox>
+

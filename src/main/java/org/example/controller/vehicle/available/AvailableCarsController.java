@@ -1,21 +1,27 @@
-package org.example.controller;
+package org.example.controller.vehicle.available;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.model.vehicle.Car;
+import org.example.model.vehicle.Vehicle;
 import org.example.model.vehicle.VehicleType;
 import org.example.repository.BookingsRepository;
 import org.example.repository.ClientRepository;
 import org.example.repository.vehicle.VehicleRepository;
+import org.example.service.vehicle.CarService;
+import org.example.util.ClientUtils;
 import org.example.util.LocalDateConverter;
+import org.example.util.PopUpUtil;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.prefs.Preferences;
 
 public class AvailableCarsController {
@@ -46,6 +52,8 @@ public class AvailableCarsController {
 
     VehicleRepository vehicleRepository;
     ClientRepository clientRepository;
+    @FXML
+    private TextField phoneTextField;
 
     @FXML
     public void initialize() {
@@ -60,6 +68,14 @@ public class AvailableCarsController {
 
         vehicleRepository = new VehicleRepository();
         clientRepository = new ClientRepository();
+
+        setPhoneTFVisibility();
+    }
+
+    private void setPhoneTFVisibility() {
+        if (ClientUtils.isAdmin()){
+            phoneTextField.setVisible(true);
+        }
     }
 
     public void setDetails(VehicleType vehicleType, LocalDate startDate, LocalDate endDate) {
@@ -70,7 +86,9 @@ public class AvailableCarsController {
     }
 
     private void loadAvailableVehicles() {
-        List<Car> availableCars = vehicleRepository.loadAvailableCarsInTimePeriodRange(startDate, endDate, vehicleType);
+        List<Vehicle> vehicles = vehicleRepository.loadAvailableVehiclesInTimePeriodRange(startDate, endDate, vehicleType);
+        CarService carService = new CarService();
+        List<Car> availableCars = carService.castVehiclesToCars(vehicles);
         prepareAvailableCars(availableCars);
     }
 
@@ -85,17 +103,28 @@ public class AvailableCarsController {
         Car selectedVehicle = availableCarsTable.getSelectionModel().getSelectedItem();
         if (selectedVehicle != null) {
             BookingsRepository bookingRepository = new BookingsRepository();
-            int carId = vehicleRepository.prepareVehicleIdByRegPlate(selectedVehicle.getRegistrationPlate()).orElseThrow();
+            int carId = vehicleRepository.prepareVehicleIdByRegPlate(selectedVehicle.getRegistrationPlate())
+                    .orElseThrow();
             String phone = Preferences.userRoot().get("phone", null);
-            int clientId = clientRepository.prepareClientIdByPhoneNumber(phone).orElseThrow();
-            bookingRepository.saveBooking(LocalDateConverter.convertToDatabaseColumn(startDate),
-                    LocalDateConverter.convertToDatabaseColumn(endDate), carId,clientId);
+            if (!phoneTextField.getText().trim().isEmpty()) {
+                phone = phoneTextField.getText();
+            }
+            Optional<Integer> clientIdInit = clientRepository.prepareClientIdByPhoneNumber(phone);
+            if (clientIdInit.isEmpty()) {
+                PopUpUtil.popUpError("Client was not found", "Change client's phone number to the existing one");
+            } else {
+                int clientId = clientIdInit.orElseThrow();
+                bookingRepository.saveBooking(LocalDateConverter.convertToDatabaseColumn(startDate),
+                        LocalDateConverter.convertToDatabaseColumn(endDate), carId, clientId);
+                PopUpUtil.popUpInfo("Booking success", selectedVehicle.getMake()+" "+selectedVehicle.getBrand()+" has been booked for: "+startDate+" to "+endDate);
+                closeOrCancel();
+            }
         }
     }
 
 
     @FXML
-    private void cancel() {
+    private void closeOrCancel() {
         Stage stage = (Stage) availableCarsTable.getScene().getWindow();
         stage.close();
     }
