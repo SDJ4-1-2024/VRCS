@@ -1,5 +1,7 @@
 package org.example.controller.vehicle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,27 +10,36 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.example.controller.vehicle.addEdit.AddEditVanViewController;
+import org.example.model.vehicle.Van;
+import org.example.repository.vehicle.VehicleRepository;
 import org.example.viewmodel.vehicle.VanViewModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.io.IOException;
+import java.util.List;
 
 public class VanViewController {
-    @FXML private TableView<VanViewModel> vanTable;
-    @FXML private TableColumn<VanViewModel, String> makeColumn;
-    @FXML private TableColumn<VanViewModel, String> brandColumn;
-    @FXML private TableColumn<VanViewModel, String> registrationPlateColumn;
-    @FXML private TableColumn<VanViewModel, Integer> trunkSpaceHeightColumn;
-    @FXML private TableColumn<VanViewModel, Integer> trunkSpaceWidthColumn;
-    @FXML private TableColumn<VanViewModel, Integer> carryingCapacityColumn;
-    @FXML private TableColumn<VanViewModel, Integer> hpColumn;
-    @FXML private TableColumn<VanViewModel, Integer> pricePerDayColumn;
-
-    private ObservableList<VanViewModel> vans;
+    @FXML
+    private TableView<VanViewModel> vanTable;
+    @FXML
+    private TableColumn<VanViewModel, String> makeColumn;
+    @FXML
+    private TableColumn<VanViewModel, String> brandColumn;
+    @FXML
+    private TableColumn<VanViewModel, String> registrationPlateColumn;
+    @FXML
+    private TableColumn<VanViewModel, Integer> trunkSpaceHeightColumn;
+    @FXML
+    private TableColumn<VanViewModel, Integer> trunkSpaceWidthColumn;
+    @FXML
+    private TableColumn<VanViewModel, Integer> carryingCapacityColumn;
+    @FXML
+    private TableColumn<VanViewModel, Integer> hpColumn;
+    @FXML
+    private TableColumn<VanViewModel, Integer> pricePerDayColumn;
+    private ObservableList<VanViewModel> vansData;
 
     public void initialize() {
-        vans = FXCollections.observableArrayList();
+        vansData = FXCollections.observableArrayList();
 
         makeColumn.setCellValueFactory(cellData -> cellData.getValue().makeProperty());
         brandColumn.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
@@ -39,7 +50,15 @@ public class VanViewController {
         hpColumn.setCellValueFactory(cellData -> cellData.getValue().hpProperty().asObject());
         pricePerDayColumn.setCellValueFactory(cellData -> cellData.getValue().pricePerDayProperty().asObject());
 
-        vanTable.setItems(vans);
+        VehicleRepository vehicleRepository = new VehicleRepository();
+        prepareVans(vehicleRepository.loadVans());
+    }
+
+    private void prepareVans(List<Van> vans) {
+        for (Van van : vans) {
+            vansData.add(new VanViewModel(van));
+        }
+        vanTable.setItems(vansData);
     }
 
     @FXML
@@ -51,7 +70,7 @@ public class VanViewController {
     private void removeVan() {
         VanViewModel selectedVan = vanTable.getSelectionModel().getSelectedItem();
         if (selectedVan != null) {
-            vans.remove(selectedVan);
+            vansData.remove(selectedVan);
         }
     }
 
@@ -61,7 +80,7 @@ public class VanViewController {
             Parent root = loader.load();
 
             AddEditVanViewController controller = loader.getController();
-            controller.setViewModel(vans, vanViewModel);
+            controller.setViewModel(vansData, vanViewModel);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

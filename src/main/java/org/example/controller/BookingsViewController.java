@@ -14,9 +14,8 @@ import org.example.service.BookingsService;
 import org.example.viewmodel.BookingViewModel;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
-public class BookingsViewController {
+public class BookingsViewController implements RefreshableBookingsController {
 
     @FXML
     private TableView<BookingViewModel> bookingsTableView;
@@ -36,7 +35,7 @@ public class BookingsViewController {
     private final BookingsService bookingsService = new BookingsService();
 
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize() {
         clientColumn.setCellValueFactory(new PropertyValueFactory<>("clientPhoneNumber"));
         vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleRegistrationPlate"));
         vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
@@ -45,8 +44,15 @@ public class BookingsViewController {
         setBookings();
     }
 
-    private void setBookings(){
+    private void setBookings() {
         bookingData = bookingsService.prepareBookings();
+        bookingsTableView.setItems(bookingData);
+    }
+
+    @Override
+    public void refreshBookings() {
+        bookingData.clear();
+        bookingData.addAll(bookingsService.prepareBookings());
         bookingsTableView.setItems(bookingData);
     }
 
@@ -55,6 +61,9 @@ public class BookingsViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/VehicleTypeSelectionView.fxml"));
             Parent root = loader.load();
+
+            VehicleTypeSelectionController controller = loader.getController();
+            controller.setRefreshableBookingsController(this);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -67,7 +76,6 @@ public class BookingsViewController {
 
     @FXML
     private void handleEdit() {
-        // Logic to edit a booking
     }
 
     @FXML

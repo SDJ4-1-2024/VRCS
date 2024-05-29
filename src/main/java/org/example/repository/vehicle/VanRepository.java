@@ -34,7 +34,7 @@ public class VanRepository {
     }
 
     public void saveVan(Van van, int vehicleId) {
-        String query = "INSERT INTO Van (vehicle_id, trunk_space_height, trunk_space_width, carrying_capacity, hp) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO vans (vehicle_id, trunk_space_height, trunk_space_width, carrying_capacity, hp) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

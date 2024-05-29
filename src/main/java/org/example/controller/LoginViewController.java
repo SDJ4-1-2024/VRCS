@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.model.client.ClientType;
 import org.example.model.vehicle.VehicleType;
+import org.example.util.PopUpUtil;
 import org.example.viewmodel.login.LoginViewModel;
 import org.example.viewmodel.admin.AdminViewModel;
 import org.example.viewmodel.client.ClientViewModel;
@@ -44,6 +45,9 @@ public class LoginViewController {
                 openClientView();
             }
         }
+        else {
+            PopUpUtil.popUpError("Wrong Credentials", "Your phone number or password is wrong");
+        }
     }
 
     @FXML
@@ -59,7 +63,6 @@ public class LoginViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/client/ClientView.fxml"));
             Parent root = loader.load();
             ClientViewController controller = loader.getController();
-            controller.setViewModel(new ClientViewModel());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

@@ -38,9 +38,10 @@ public class CarViewController {
     @FXML
     private TableColumn<CarViewModel, Integer> pricePerDayColumn;
 
-    private ObservableList<CarViewModel> carsData = FXCollections.observableArrayList();
+    private ObservableList<CarViewModel> carsData;
 
     public void initialize() {
+        carsData = FXCollections.observableArrayList();
         makeColumn.setCellValueFactory(cellData -> cellData.getValue().makeProperty());
         brandColumn.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
         registrationPlateColumn.setCellValueFactory(cellData -> cellData.getValue().registrationPlateProperty());

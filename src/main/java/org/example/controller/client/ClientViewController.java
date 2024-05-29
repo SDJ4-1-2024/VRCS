@@ -1,5 +1,7 @@
 package org.example.controller.client;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,26 +10,51 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.example.model.Booking;
-import org.example.viewmodel.client.ClientViewModel;
+import org.example.controller.RefreshableBookingsController;
+import org.example.controller.VehicleTypeSelectionController;
+import org.example.service.BookingsService;
+import org.example.viewmodel.BookingViewModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-public class ClientViewController {
-    @FXML private TableView<Booking> bookingsTable;
-    @FXML private TableColumn<Booking, String> vehicleColumn;
-    @FXML private TableColumn<Booking, String> startDateColumn;
-    @FXML private TableColumn<Booking, String> endDateColumn;
+public class ClientViewController implements RefreshableBookingsController {
+    @FXML
+    private TableView<BookingViewModel> bookingsTableView;
+    @FXML
+    private TableColumn<BookingViewModel, String> vehicleColumn;
+    @FXML
+    private TableColumn<BookingViewModel, String> vehicleTypeColumn;
+    @FXML
+    private TableColumn<BookingViewModel, String> startDateColumn;
+    @FXML
+    private TableColumn<BookingViewModel, String> endDateColumn;
 
-    private ClientViewModel viewModel;
+    private ObservableList<BookingViewModel> bookingData = FXCollections.observableArrayList();
 
-    public void setViewModel(ClientViewModel viewModel) {
-        this.viewModel = viewModel;
-        bookingsTable.setItems(viewModel.getBookings());
+    private final BookingsService bookingsService = new BookingsService();
 
-        vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicle"));
+    @FXML
+    public void initialize() throws SQLException {
+        vehicleColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleRegistrationPlate"));
+        vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+        setBookings();
+    }
+
+
+
+    private void setBookings() {
+        bookingData = bookingsService.prepareBookings();
+        bookingsTableView.setItems(bookingData);
+    }
+
+    @Override
+    public void refreshBookings() {
+        bookingData.clear();
+        bookingData.addAll(bookingsService.prepareBookings());
+        bookingsTableView.setItems(bookingData);
     }
 
     @FXML
@@ -35,6 +62,9 @@ public class ClientViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/VehicleTypeSelectionView.fxml"));
             Parent root = loader.load();
+
+            VehicleTypeSelectionController controller = loader.getController();
+            controller.setRefreshableBookingsController(this);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -47,9 +77,9 @@ public class ClientViewController {
 
     @FXML
     private void removeBooking() {
-        Booking selectedBooking = bookingsTable.getSelectionModel().getSelectedItem();
-        if (selectedBooking != null) {
-            viewModel.removeBooking(selectedBooking);
+        BookingViewModel selectedBooking = bookingsTableView.getSelectionModel().getSelectedItem();
+        if (bookingsService.isRemoved(selectedBooking)) {
+            bookingData.remove(selectedBooking);
         }
     }
 }

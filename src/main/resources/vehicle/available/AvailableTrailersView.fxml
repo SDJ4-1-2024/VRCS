@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 
 <?import javafx.scene.control.TextField?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.available.AvailableTrailersController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.available.AvailableTrailersController" alignment="CENTER" spacing="10" prefHeight="600" prefWidth="800">
     <Label text="Available Trailers"/>
     <TableView fx:id="availableTrailersTable">
         <columns>

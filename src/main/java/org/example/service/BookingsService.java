@@ -9,15 +9,15 @@ import org.example.repository.vehicle.VehicleRepository;
 import org.example.util.ClientUtils;
 import org.example.util.LocalDateConverter;
 import org.example.util.PopUpUtil;
+import org.example.util.logger.SingletonLog;
 import org.example.viewmodel.BookingViewModel;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public class BookingsService {
 
-    private static BookingsRepository bookingsRepository;
+    private final BookingsRepository bookingsRepository;
 
     public BookingsService() {
         bookingsRepository = new BookingsRepository();
@@ -43,21 +43,17 @@ public class BookingsService {
         if (selectedBooking != null) {
             String startDate = selectedBooking.getStartDate();
             String endDate = selectedBooking.getEndDate();
-            BookingsService bookingsService = new BookingsService();
             LocalDate startDateMod = LocalDate.parse(startDate);
             LocalDate endDateMod = LocalDate.parse(endDate);
-            if (!bookingsService.isOngoing(startDateMod, endDateMod)){
-                String vehicleRegistrationPlate = selectedBooking.getVehicleRegistrationPlate();
-                VehicleRepository vehicleRepository = new VehicleRepository();
-                Integer vehicleId = vehicleRepository.prepareVehicleIdByRegPlate(vehicleRegistrationPlate).orElseThrow();
-                String clientPhoneNumber = selectedBooking.getClientPhoneNumber();
-                ClientRepository clientRepository = new ClientRepository();
-                Integer clientId = clientRepository.prepareClientIdByPhoneNumber(clientPhoneNumber).orElseThrow();
+            if (!isOngoing(startDateMod, endDateMod)) {
+                Integer vehicleId = prepareVehicleId(selectedBooking);
+                Integer clientId = prepareClientId(selectedBooking);
                 bookingsRepository.removeBooking(LocalDateConverter.convertToDatabaseColumn(startDateMod), LocalDateConverter.convertToDatabaseColumn(endDateMod), vehicleId, clientId);
+                SingletonLog.getInstance().addLog("Booking of: vehicleId: "+vehicleId +" and clientId: "+clientId+" has been removed");
                 return true;
-            }
-            else {
+            } else {
                 PopUpUtil.popUpInfo("Booking is ongoing", "You cannot remove currently ongoing booking");
+                SingletonLog.getInstance().addLog("Booking has NOT been removed");
                 return false;
             }
 
@@ -65,9 +61,21 @@ public class BookingsService {
         return false;
     }
 
+    private static Integer prepareClientId(BookingViewModel selectedBooking) {
+        String clientPhoneNumber = selectedBooking.getClientPhoneNumber();
+        ClientRepository clientRepository = new ClientRepository();
+        return clientRepository.prepareClientIdByPhoneNumber(clientPhoneNumber).orElseThrow();
+    }
+
+    private static Integer prepareVehicleId(BookingViewModel selectedBooking) {
+        String vehicleRegistrationPlate = selectedBooking.getVehicleRegistrationPlate();
+        VehicleRepository vehicleRepository = new VehicleRepository();
+        return vehicleRepository.prepareVehicleIdByRegPlate(vehicleRegistrationPlate).orElseThrow();
+    }
+
     private boolean isOngoing(LocalDate startDate, LocalDate endDate) {
         LocalDate currentDate = LocalDate.now();
-        return (currentDate.isAfter(startDate)  && currentDate.isBefore(endDate)) || currentDate.equals(startDate)  || currentDate.equals(endDate);
+        return (currentDate.isAfter(startDate) && currentDate.isBefore(endDate)) || currentDate.equals(startDate) || currentDate.equals(endDate);
     }
 
 }
