@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.addEdit.AddEditVanViewController" alignment="CENTER" spacing="10">
+    <Label text="Van Details"/>
+    <TextField fx:id="makeField" promptText="Make"/>
+    <TextField fx:id="brandField" promptText="Brand"/>
+    <TextField fx:id="registrationPlateField" promptText="Registration Plate"/>
+    <TextField fx:id="trunkSpaceHeightField" promptText="Trunk Space Height"/>
+    <TextField fx:id="trunkSpaceWidthField" promptText="Trunk Space Width"/>
+    <TextField fx:id="carryingCapacityField" promptText="Carrying Capacity"/>
+    <TextField fx:id="hpField" promptText="Horsepower"/>
+    <TextField fx:id="pricePerDayField" promptText="Price Per Day"/>
+    <HBox spacing="10">
+        <Button text="Save" onAction="#saveVan"/>
+        <Button text="Cancel" onAction="#cancel"/>
+    </HBox>
+</VBox>
+

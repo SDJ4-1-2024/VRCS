@@ -14,7 +14,7 @@ import java.util.Optional;
 public class TrailerRepository {
     public Optional<Trailer> prepareTrailerById(int id, String make, String brand, String registrationPlate, int pricePerDay) {
 
-        String query = "SELECT * FROM vans where vehicle_id=" + id;
+        String query = "SELECT * FROM trailers where vehicle_id=" + id;
         Optional<Trailer> trailer = Optional.empty();
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -32,4 +32,22 @@ public class TrailerRepository {
         }
         return trailer;
     }
+
+    public void saveTrailer(Trailer trailer, int vehicleId) {
+        String query = "INSERT INTO Trailer (vehicle_id, trunk_space_height, trunk_space_width, carrying_capacity) VALUES (?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, vehicleId);
+            preparedStatement.setInt(2, trailer.getTrunkSpaceHeight());
+            preparedStatement.setInt(3, trailer.getTrunkSpaceWidth());
+            preparedStatement.setInt(4, trailer.getCarryingCapacity());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
