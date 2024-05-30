@@ -185,7 +185,6 @@ public class VehicleRepository {
             deleteVehicleStmt.setString(1, registrationPlate);
             deleteCarStmt.setString(1, registrationPlate);
 
-            // Execute the delete statements
             deleteCarStmt.executeUpdate();
             deleteVehicleStmt.executeUpdate();
 
@@ -226,4 +225,36 @@ public class VehicleRepository {
         }
     }
 
+    public void updateVehicle(Vehicle vehicle) {
+        String queryVehicles = "UPDATE vehicles SET make = ?, brand = ?, registration_plate = ?, vehicle_type = ?::vehicle_type, price_per_day = ? WHERE registration_plate = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(queryVehicles)) {
+
+            preparedStatement.setString(1, vehicle.getMake());
+            preparedStatement.setString(2, vehicle.getBrand());
+            preparedStatement.setString(3, vehicle.getRegistrationPlate());
+            preparedStatement.setString(4, vehicle.getVehicleType().name());
+            preparedStatement.setInt(5, vehicle.getPricePerDay());
+            preparedStatement.setString(6, vehicle.getRegistrationPlate());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        int vehicleId = prepareVehicleIdByRegPlate(vehicle.getRegistrationPlate()).orElseThrow();
+        String vehicleType = vehicle.getVehicleType().name();
+        if (vehicleType.equals(VehicleType.CAR.name())) {
+            Car car = (Car) vehicle;
+            carRepository.updateCar(car, vehicleId);
+        }
+        if (vehicleType.equals(VehicleType.VAN.name())) {
+            Van van = (Van) vehicle;
+            vanRepository.updateVan(van, vehicleId);
+        }
+        if (vehicleType.equals(VehicleType.TRAILER.name())) {
+            Trailer trailer = (Trailer) vehicle;
+            trailerRepository.updateTrailer(trailer, vehicleId);
+        }
+    }
 }

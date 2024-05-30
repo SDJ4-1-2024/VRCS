@@ -49,5 +49,21 @@ public class TrailerRepository {
             e.printStackTrace();
         }
     }
-    
+
+    public void updateTrailer(Trailer trailer, int vehicleId) {
+        String query = "UPDATE trailers SET trunk_space_height = ?, trunk_space_width = ?, carrying_capacity = ? WHERE vehicle_id = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, trailer.getTrunkSpaceHeight());
+            stmt.setInt(2, trailer.getTrunkSpaceWidth());
+            stmt.setInt(3, trailer.getCarryingCapacity());
+            stmt.setInt(4, vehicleId);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

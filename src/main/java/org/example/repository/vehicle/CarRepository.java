@@ -51,4 +51,21 @@ public class CarRepository {
             e.printStackTrace();
         }
     }
+
+    public void updateCar(Car car, int vehicleId) {
+        String query = "UPDATE cars SET number_of_seats = ?, trunk_capacity = ?, hp = ? WHERE vehicle_id = ?";
+
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, car.getNumberOfSeats());
+            preparedStatement.setInt(2, car.getTrunkCapacity());
+            preparedStatement.setInt(3, car.getHp());
+            preparedStatement.setInt(4, vehicleId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

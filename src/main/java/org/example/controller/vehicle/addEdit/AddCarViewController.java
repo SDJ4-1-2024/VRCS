@@ -7,11 +7,10 @@ import javafx.stage.Stage;
 import org.example.model.vehicle.Car;
 import org.example.model.vehicle.CarBuilder;
 import org.example.model.vehicle.VehicleType;
-import org.example.repository.vehicle.CarRepository;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.viewmodel.vehicle.CarViewModel;
 
-public class AddEditCarViewController {
+public class AddCarViewController {
     @FXML private TextField makeField;
     @FXML private TextField brandField;
     @FXML private TextField registrationPlateField;

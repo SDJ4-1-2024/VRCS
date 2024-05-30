@@ -4,12 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Popup;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.controller.vehicle.addEdit.AddEditCarViewController;
+import org.example.controller.vehicle.addEdit.EditCarController;
+import org.example.controller.vehicle.addEdit.AddCarViewController;
 import org.example.model.vehicle.Car;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.util.PopUpUtil;
@@ -40,6 +40,8 @@ public class CarViewController {
 
     private ObservableList<CarViewModel> carsData;
 
+    private VehicleRepository vehicleRepository;
+
     public void initialize() {
         carsData = FXCollections.observableArrayList();
         makeColumn.setCellValueFactory(cellData -> cellData.getValue().makeProperty());
@@ -50,15 +52,42 @@ public class CarViewController {
         hpColumn.setCellValueFactory(cellData -> cellData.getValue().hpProperty().asObject());
         pricePerDayColumn.setCellValueFactory(cellData -> cellData.getValue().pricePerDayProperty().asObject());
 
-        VehicleRepository vehicleRepository = new VehicleRepository();
-        prepareCars(vehicleRepository.loadCars());
+        vehicleRepository = new VehicleRepository();
+        prepareCars();
     }
 
-    private void prepareCars(List<Car> cars) {
+    private void prepareCars() {
+        List<Car> cars = vehicleRepository.loadCars();
+        carsData.clear();
         for (Car car : cars) {
             carsData.add(new CarViewModel(car));
         }
         carTable.setItems(carsData);
+    }
+
+    @FXML
+    private void editCar() {
+        CarViewModel selectedCar = carTable.getSelectionModel().getSelectedItem();
+        if (selectedCar != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/EditCar.fxml"));
+                Parent root = loader.load();
+
+                EditCarController controller = loader.getController();
+                controller.setCar(selectedCar);
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Edit Car");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+
+                prepareCars();
+                carTable.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -83,10 +112,10 @@ public class CarViewController {
 
     private void openCarDialog(CarViewModel carViewModel) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/AddEditCarView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/AddCarView.fxml"));
             Parent root = loader.load();
 
-            AddEditCarViewController controller = loader.getController();
+            AddCarViewController controller = loader.getController();
             controller.setViewModel(carsData, carViewModel);
 
             Stage stage = new Stage();

@@ -7,11 +7,10 @@ import javafx.stage.Stage;
 import org.example.model.vehicle.Trailer;
 import org.example.model.vehicle.TrailerBuilder;
 import org.example.model.vehicle.VehicleType;
-import org.example.repository.vehicle.TrailerRepository;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.viewmodel.vehicle.TrailerViewModel;
 
-public class AddEditTrailerViewController {
+public class AddTrailerViewController {
     @FXML
     private TextField makeField;
     @FXML

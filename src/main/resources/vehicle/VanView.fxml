@@ -20,6 +20,7 @@
     <HBox spacing="10">
         <Button text="Remove Selected Van" onAction="#removeVan"/>
         <Button text="Add Van" onAction="#addVan"/>
+        <Button text="Edit Selected Van" onAction="#editVan"/>
     </HBox>
 </VBox>
 

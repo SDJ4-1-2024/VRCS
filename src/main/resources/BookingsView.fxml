@@ -14,8 +14,8 @@
         <TableColumn fx:id="endDateColumn" text="End Date"/>
     </columns>
 </TableView>
-<Button text="Add" onAction="#handleAdd"/>
-<!--<Button text="Edit" onAction="#handleEdit"/>-->
+    <!--<Button text="Add" onAction="#handleAdd"/>-->
+    <!--<Button text="Edit" onAction="#handleEdit"/>-->
 <Button text="Remove" onAction="#handleRemove"/>
 </VBox>
 
