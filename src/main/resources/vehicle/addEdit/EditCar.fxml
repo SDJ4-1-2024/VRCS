@@ -1,0 +1,15 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.addEdit.EditCarController" spacing="10" alignment="CENTER">
+    <Label text="Edit Car Details"/>
+    <TextField fx:id="makeField" promptText="Make"/>
+    <TextField fx:id="brandField" promptText="Brand"/>
+    <TextField fx:id="registrationPlateField" promptText="Registration Plate"/>
+    <TextField fx:id="pricePerDayField" promptText="Price Per Day"/>
+    <TextField fx:id="numberOfSeatsField" promptText="Number of Seats"/>
+    <TextField fx:id="trunkCapacityField" promptText="Trunk Capacity"/>
+    <TextField fx:id="hpField" promptText="HP"/>
+    <Button text="Save" onAction="#saveCar"/>
+    <Button text="Cancel" onAction="#cancel"/>
+</VBox>

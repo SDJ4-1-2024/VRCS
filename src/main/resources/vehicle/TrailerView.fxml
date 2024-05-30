@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.TrailerViewController" alignment="CENTER" spacing="10" prefHeight="600" prefWidth="800">
+    <Label text="Manage Trailers"/>
+    <TableView fx:id="trailerTable">
+        <columns>
+            <TableColumn fx:id="makeColumn" text="Make"/>
+            <TableColumn fx:id="brandColumn" text="Brand"/>
+            <TableColumn fx:id="registrationPlateColumn" text="Registration Plate"/>
+            <TableColumn fx:id="trunkSpaceHeightColumn" text="Trunk Space Height"/>
+            <TableColumn fx:id="trunkSpaceWidthColumn" text="Trunk Space Width"/>
+            <TableColumn fx:id="carryingCapacityColumn" text="Carrying Capacity"/>
+            <TableColumn fx:id="pricePerDayColumn" text="Price Per Day"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <Button text="Remove Selected Trailer" onAction="#removeTrailer"/>
+        <Button text="Add Trailer" onAction="#addTrailer"/>
+        <Button text="Edit Selected Trailer" onAction="#editTrailer"/>
+    </HBox>
+</VBox>
+

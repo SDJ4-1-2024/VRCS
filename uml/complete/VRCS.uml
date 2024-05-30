@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/dkSzyHaj/IdeaProjects/VRCS</OriginalElement>
+  <nodes>
+    <node x="730.0" y="3457.0">org.example.controller.vehicle.addEdit.AddEditTrailerViewController</node>
+    <node x="5395.5" y="4370.0">org.example.viewmodel.VehicleViewModel</node>
+    <node x="4488.0" y="5968.0">org.example.controller.client.ClientViewController</node>
+    <node x="4288.0" y="3170.0">org.example.service.ClientService</node>
+    <node x="2989.5" y="3026.0">org.example.controller.vehicle.addEdit.AddEditVanViewController</node>
+    <node x="338.0" y="6057.0">org.example.controller.ManageVehiclesViewController</node>
+    <node x="4074.0" y="3590.0">org.example.service.vehicle.VanService</node>
+    <node x="4827.0" y="5610.0">org.example.viewmodel.RentViewModel</node>
+    <node x="1898.5" y="2266.0">org.example.repository.vehicle.VehicleRepository</node>
+    <node x="1962.5" y="1153.0">org.example.model.vehicle.TrailerBuilder</node>
+    <node x="4258.0" y="2377.0">org.example.repository.ClientRepository</node>
+    <node x="896.5" y="4845.0">org.example.controller.vehicle.available.AvailableCarsController</node>
+    <node x="1312.0" y="752.0">org.example.model.vehicle.Car</node>
+    <node x="2980.5" y="268.0">org.example.model.vehicle.Vehicle</node>
+    <node x="376.5" y="5065.0">org.example.controller.VehicleTypeSelectionController</node>
+    <node x="5232.5" y="5065.0">org.example.controller.admin.AdminViewController</node>
+    <node x="1594.5" y="1879.0">org.example.repository.vehicle.CarRepository</node>
+    <node x="3868.0" y="5566.0">org.example.controller.BookingsViewController</node>
+    <node x="2660.5" y="3435.0">org.example.controller.vehicle.VanViewController</node>
+    <node x="-103.5" y="4966.0">org.example.controller.DateRangeSelectionController</node>
+    <node x="679.0" y="2189.0">org.example.viewmodel.vehicle.TrailerViewModel</node>
+    <node x="3761.5" y="6067.0">org.example.network.Server</node>
+    <node x="2969.5" y="1131.0">org.example.model.vehicle.VanBuilder</node>
+    <node x="-123.0" y="3602.0">org.example.controller.RefreshableBookingsController</node>
+    <node x="4312.5" y="5699.0">org.example.util.PopUpUtil</node>
+    <node x="-96.5" y="-15.0">org.example.model.vehicle.VehicleType</node>
+    <node x="5064.0" y="4359.0">org.example.controller.LoginViewController</node>
+    <node x="5547.5" y="5665.0">org.example.model.client.ClientType</node>
+    <node x="1936.5" y="4216.0">org.example.controller.vehicle.available.AvailableTrailersController</node>
+    <node x="3588.5" y="3512.0">org.example.repository.BookingsRepository</node>
+    <node x="5246.5" y="3567.0">org.example.viewmodel.client.ClientViewModel</node>
+    <node x="2232.0" y="1879.0">org.example.repository.vehicle.VanRepository</node>
+    <node x="2395.0" y="719.0">org.example.model.vehicle.Trailer</node>
+    <node x="1535.5" y="2156.0">org.example.viewmodel.vehicle.CarViewModel</node>
+    <node x="4208.0" y="5110.0">org.example.service.vehicle.VanServiceTest</node>
+    <node x="1898.5" y="1699.0">org.example.repository.vehicle.TrailerRepository</node>
+    <node x="5018.0" y="6079.0">org.example.util.LocalDateConverter</node>
+    <node x="745.5" y="5643.0">org.example.util.logger.SingletonLog</node>
+    <node x="1370.5" y="1153.0">org.example.model.vehicle.CarBuilder</node>
+    <node x="4964.5" y="5099.0">org.example.Main</node>
+    <node x="2954.5" y="730.0">org.example.model.vehicle.Van</node>
+    <node x="1628.5" y="3026.0">org.example.controller.vehicle.CarViewController</node>
+    <node x="5351.0" y="6012.0">org.example.controller.VehicleViewController</node>
+    <node x="620.5" y="6079.0">org.example.util.ClientUtilsTest</node>
+    <node x="3756.0" y="5076.0">org.example.network.ClientHandler</node>
+    <node x="3876.5" y="4205.0">org.example.controller.vehicle.available.AvailableVansController</node>
+    <node x="2739.0" y="2156.0">org.example.viewmodel.vehicle.VanViewModel</node>
+    <node x="1076.5" y="3170.0">org.example.service.vehicle.CarService</node>
+    <node x="1292.0" y="3457.0">org.example.controller.vehicle.addEdit.AddEditCarViewController</node>
+    <node x="5466.5" y="3147.0">org.example.viewmodel.admin.AdminViewModel</node>
+    <node x="214.0" y="3446.0">org.example.controller.vehicle.TrailerViewController</node>
+    <node x="4928.0" y="3114.0">org.example.viewmodel.login.LoginViewModel</node>
+    <node x="4325.0" y="4414.0">org.example.service.BookingsService</node>
+    <node x="5050.5" y="2321.0">org.example.model.Booking</node>
+    <node x="2220.5" y="3590.0">org.example.service.vehicle.TrailerService</node>
+    <node x="4188.0" y="6090.0">org.example.util.logger.SingletonLogTest</node>
+    <node x="773.0" y="4447.0">org.example.util.logger.LogLine</node>
+    <node x="4605.5" y="4955.0">org.example.viewmodel.ManageVehicleViewModel</node>
+    <node x="507.0" y="5699.0">org.example.util.ClientUtils</node>
+    <node x="4685.5" y="3435.0">org.example.viewmodel.BookingViewModel</node>
+    <node x="5221.0" y="5698.0">org.example.util.DatabaseUtil</node>
+    <node x="4391.5" y="1823.0">org.example.model.client.Client</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.example.service.ClientService" target="org.example.repository.ClientRepository" relationship="TO_ONE">
+      <point x="0.0" y="-39.0" />
+      <point x="4401.0" y="3149.0" />
+      <point x="3861.0" y="3149.0" />
+      <point x="3861.0" y="2549.0" />
+      <point x="4349.5" y="2549.0" />
+      <point x="-91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.controller.RefreshableBookingsController" relationship="TO_ONE">
+      <point x="-102.25" y="-293.0" />
+      <point x="2038.75" y="4189.0" />
+      <point x="1961.0" y="4189.0" />
+      <point x="1961.0" y="3949.0" />
+      <point x="101.0" y="3949.0" />
+      <point x="101.0" y="3689.0" />
+      <point x="63.0" y="3689.0" />
+      <point x="62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditVanViewController" target="org.example.viewmodel.vehicle.VanViewModel" relationship="CREATE">
+      <point x="-105.75" y="-183.0" />
+      <point x="3095.25" y="2989.0" />
+      <point x="3101.0" y="2989.0" />
+      <point x="3101.0" y="2849.0" />
+      <point x="2801.0" y="2849.0" />
+      <point x="2801.0" y="2769.0" />
+      <point x="2810.0" y="2769.0" />
+      <point x="-71.0" y="293.0" />
+    </edge>
+    <edge source="org.example.service.BookingsService" target="org.example.repository.ClientRepository" relationship="CREATE">
+      <point x="88.0" y="-95.0" />
+      <point x="4589.0" y="4389.0" />
+      <point x="4661.0" y="4389.0" />
+      <point x="4661.0" y="3609.0" />
+      <point x="4541.0" y="3609.0" />
+      <point x="4541.0" y="2549.0" />
+      <point x="4532.5" y="2549.0" />
+      <point x="91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.controller.DateRangeSelectionController" target="org.example.controller.RefreshableBookingsController" relationship="TO_ONE">
+      <point x="0.0" y="-183.0" />
+      <point x="101.0" y="3689.0" />
+      <point x="63.0" y="3689.0" />
+      <point x="62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.controller.BookingsViewController" target="org.example.service.BookingsService" relationship="TO_ONE">
+      <point x="128.66666666666669" y="-183.0" />
+      <point x="4189.666666666667" y="5529.0" />
+      <point x="4581.0" y="5529.0" />
+      <point x="4581.0" y="4629.0" />
+      <point x="4589.0" y="4629.0" />
+      <point x="88.0" y="95.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VehicleRepository" target="org.example.repository.vehicle.VanRepository" relationship="TO_ONE">
+      <point x="111.25" y="-183.0" />
+      <point x="2232.25" y="2229.0" />
+      <point x="2241.0" y="2229.0" />
+      <point x="2241.0" y="2009.0" />
+      <point x="2515.5" y="2009.0" />
+      <point x="94.5" y="50.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditVanViewController" target="org.example.viewmodel.vehicle.VanViewModel" relationship="TO_MANY">
+      <point x="105.75" y="-183.0" />
+      <point x="3306.75" y="2789.0" />
+      <point x="2961.0" y="2789.0" />
+      <point x="2961.0" y="2769.0" />
+      <point x="2952.0" y="2769.0" />
+      <point x="71.0" y="293.0" />
+    </edge>
+    <edge source="org.example.viewmodel.client.ClientViewModel" target="org.example.model.Booking" relationship="TO_MANY">
+      <point x="0.0" y="-62.0" />
+      <point x="5381.0" y="2609.0" />
+      <point x="5276.25" y="2609.0" />
+      <point x="75.25" y="128.0" />
+    </edge>
+    <edge source="org.example.controller.VehicleViewController" target="org.example.viewmodel.VehicleViewModel" relationship="TO_ONE">
+      <point x="0.0" y="-117.0" />
+      <point x="5481.0" y="5649.0" />
+      <point x="5561.0" y="5649.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="4183.25" y="4169.0" />
+      <point x="4181.0" y="4169.0" />
+      <point x="4181.0" y="3949.0" />
+      <point x="2561.0" y="3949.0" />
+      <point x="2561.0" y="2949.0" />
+      <point x="2001.0" y="2949.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="3978.75" y="4129.0" />
+      <point x="2001.0" y="4129.0" />
+      <point x="2001.0" y="3909.0" />
+      <point x="661.0" y="3909.0" />
+      <point x="661.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.model.Booking" target="org.example.model.client.Client" relationship="TO_ONE">
+      <point x="0.0" y="-128.0" />
+      <point x="5201.0" y="2309.0" />
+      <point x="5381.0" y="2309.0" />
+      <point x="5381.0" y="2069.0" />
+      <point x="4555.75" y="2069.0" />
+      <point x="54.75" y="106.0" />
+    </edge>
+    <edge source="org.example.controller.LoginViewController" target="org.example.viewmodel.login.LoginViewModel" relationship="TO_ONE">
+      <point x="-68.5" y="-150.0" />
+      <point x="5132.5" y="4329.0" />
+      <point x="5217.5" y="4329.0" />
+      <point x="96.5" y="95.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.VanViewController" target="org.example.viewmodel.vehicle.VanViewModel" relationship="CREATE">
+      <point x="-100.25" y="-194.0" />
+      <point x="2760.75" y="3409.0" />
+      <point x="2761.0" y="3409.0" />
+      <point x="2761.0" y="3389.0" />
+      <point x="2801.0" y="3389.0" />
+      <point x="2801.0" y="2769.0" />
+      <point x="2810.0" y="2769.0" />
+      <point x="-71.0" y="293.0" />
+    </edge>
+    <edge source="org.example.repository.BookingsRepository" target="org.example.repository.ClientRepository" relationship="TO_ONE">
+      <point x="-106.25" y="-117.0" />
+      <point x="3694.75" y="3489.0" />
+      <point x="3701.0" y="3489.0" />
+      <point x="3701.0" y="3129.0" />
+      <point x="3861.0" y="3129.0" />
+      <point x="3861.0" y="2549.0" />
+      <point x="4349.5" y="2549.0" />
+      <point x="-91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.service.BookingsService" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="88.0" y="-95.0" />
+      <point x="4589.0" y="4389.0" />
+      <point x="4661.0" y="4389.0" />
+      <point x="4661.0" y="3929.0" />
+      <point x="2601.0" y="3929.0" />
+      <point x="2601.0" y="2949.0" />
+      <point x="2001.0" y="2949.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.repository.ClientRepository" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="4183.25" y="4169.0" />
+      <point x="4181.0" y="4169.0" />
+      <point x="4181.0" y="3949.0" />
+      <point x="4621.0" y="3949.0" />
+      <point x="4621.0" y="3609.0" />
+      <point x="4541.0" y="3609.0" />
+      <point x="4541.0" y="2549.0" />
+      <point x="4532.5" y="2549.0" />
+      <point x="91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Car" target="org.example.model.vehicle.Vehicle" relationship="GENERALIZATION">
+      <point x="0.0" y="-117.0" />
+      <point x="1481.0" y="689.0" />
+      <point x="3061.0" y="689.0" />
+      <point x="3061.0" y="629.0" />
+      <point x="3060.75" y="629.0" />
+      <point x="-80.25" y="161.0" />
+    </edge>
+    <edge source="org.example.repository.BookingsRepository" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="106.25" y="-117.0" />
+      <point x="3907.25" y="3489.0" />
+      <point x="3901.0" y="3489.0" />
+      <point x="3901.0" y="2809.0" />
+      <point x="2001.0" y="2809.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.repository.ClientRepository" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="998.75" y="4809.0" />
+      <point x="1001.0" y="4809.0" />
+      <point x="1001.0" y="3869.0" />
+      <point x="3521.0" y="3869.0" />
+      <point x="3521.0" y="3149.0" />
+      <point x="3861.0" y="3149.0" />
+      <point x="3861.0" y="2549.0" />
+      <point x="4349.5" y="2549.0" />
+      <point x="-91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.controller.VehicleTypeSelectionController" target="org.example.controller.RefreshableBookingsController" relationship="TO_ONE">
+      <point x="0.0" y="-84.0" />
+      <point x="581.0" y="4889.0" />
+      <point x="101.0" y="4889.0" />
+      <point x="101.0" y="3689.0" />
+      <point x="63.0" y="3689.0" />
+      <point x="62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.controller.client.ClientViewController" target="org.example.service.BookingsService" relationship="TO_ONE">
+      <point x="128.66666666666669" y="-161.0" />
+      <point x="4809.666666666667" y="5929.0" />
+      <point x="4801.0" y="5929.0" />
+      <point x="4801.0" y="5369.0" />
+      <point x="4581.0" y="5369.0" />
+      <point x="4581.0" y="4629.0" />
+      <point x="4589.0" y="4629.0" />
+      <point x="88.0" y="95.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.TrailerBuilder" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="-69.25" y="-216.0" />
+      <point x="2031.75" y="1129.0" />
+      <point x="2041.0" y="1129.0" />
+      <point x="2041.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.VanViewController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="-100.25" y="-194.0" />
+      <point x="2760.75" y="3409.0" />
+      <point x="2761.0" y="3409.0" />
+      <point x="2761.0" y="2929.0" />
+      <point x="2001.0" y="2929.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditVanViewController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="-105.75" y="-183.0" />
+      <point x="3095.25" y="2989.0" />
+      <point x="3101.0" y="2989.0" />
+      <point x="3101.0" y="2869.0" />
+      <point x="2001.0" y="2869.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VanRepository" target="org.example.model.vehicle.VanBuilder" relationship="CREATE">
+      <point x="0.0" y="-50.0" />
+      <point x="2421.0" y="1849.0" />
+      <point x="3101.0" y="1849.0" />
+      <point x="0.0" y="238.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VehicleRepository" target="org.example.repository.vehicle.CarRepository" relationship="CREATE">
+      <point x="-111.25" y="-183.0" />
+      <point x="2009.75" y="2229.0" />
+      <point x="2001.0" y="2229.0" />
+      <point x="2001.0" y="2029.0" />
+      <point x="1687.75" y="2029.0" />
+      <point x="-93.25" y="50.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.repository.vehicle.VehicleRepository" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="998.75" y="4809.0" />
+      <point x="1001.0" y="4809.0" />
+      <point x="1001.0" y="3869.0" />
+      <point x="2041.0" y="3869.0" />
+      <point x="2041.0" y="3609.0" />
+      <point x="2121.0" y="3609.0" />
+      <point x="2121.0" y="2669.0" />
+      <point x="2232.25" y="2669.0" />
+      <point x="111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.repository.BookingsRepository" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="4183.25" y="4169.0" />
+      <point x="4181.0" y="4169.0" />
+      <point x="4181.0" y="4109.0" />
+      <point x="3701.0" y="4109.0" />
+      <point x="3701.0" y="3769.0" />
+      <point x="3694.75" y="3769.0" />
+      <point x="-106.25" y="117.0" />
+    </edge>
+    <edge source="org.example.repository.ClientRepository" target="org.example.model.client.Client" relationship="CREATE">
+      <point x="0.0" y="-72.0" />
+      <point x="4441.0" y="2069.0" />
+      <point x="4446.25" y="2069.0" />
+      <point x="-54.75" y="106.0" />
+    </edge>
+    <edge source="org.example.repository.BookingsRepository" target="org.example.model.Booking" relationship="CREATE">
+      <point x="106.25" y="-117.0" />
+      <point x="3907.25" y="3489.0" />
+      <point x="3901.0" y="3489.0" />
+      <point x="3901.0" y="2849.0" />
+      <point x="5125.75" y="2849.0" />
+      <point x="-75.25" y="128.0" />
+    </edge>
+    <edge source="org.example.viewmodel.admin.AdminViewModel" target="org.example.model.Booking" relationship="TO_MANY">
+      <point x="0.0" y="-62.0" />
+      <point x="5601.0" y="3109.0" />
+      <point x="5381.0" y="3109.0" />
+      <point x="5381.0" y="2609.0" />
+      <point x="5276.25" y="2609.0" />
+      <point x="75.25" y="128.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.repository.ClientRepository" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="3978.75" y="4129.0" />
+      <point x="2001.0" y="4129.0" />
+      <point x="2001.0" y="3909.0" />
+      <point x="4041.0" y="3909.0" />
+      <point x="4041.0" y="3149.0" />
+      <point x="3861.0" y="3149.0" />
+      <point x="3861.0" y="2549.0" />
+      <point x="4349.5" y="2549.0" />
+      <point x="-91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Van" target="org.example.model.vehicle.Vehicle" relationship="GENERALIZATION">
+      <point x="0.0" y="-139.0" />
+      <point x="3121.0" y="689.0" />
+      <point x="3061.0" y="689.0" />
+      <point x="3061.0" y="629.0" />
+      <point x="3060.75" y="629.0" />
+      <point x="-80.25" y="161.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.VanBuilder" target="org.example.model.vehicle.Van" relationship="CREATE">
+      <point x="-65.75" y="-238.0" />
+      <point x="3035.25" y="1109.0" />
+      <point x="3037.75" y="1109.0" />
+      <point x="-83.25" y="139.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.service.vehicle.CarService" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="1203.25" y="4169.0" />
+      <point x="2161.0" y="4169.0" />
+      <point x="2161.0" y="3889.0" />
+      <point x="1221.0" y="3889.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="org.example.service.BookingsService" target="org.example.repository.BookingsRepository" relationship="TO_ONE">
+      <point x="-88.0" y="-95.0" />
+      <point x="4413.0" y="4089.0" />
+      <point x="3907.25" y="4089.0" />
+      <point x="106.25" y="117.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.TrailerViewController" target="org.example.viewmodel.vehicle.TrailerViewModel" relationship="TO_MANY">
+      <point x="-103.5" y="-183.0" />
+      <point x="317.5" y="3409.0" />
+      <point x="321.0" y="3409.0" />
+      <point x="321.0" y="2729.0" />
+      <point x="750.0" y="2729.0" />
+      <point x="-71.0" y="260.0" />
+    </edge>
+    <edge source="org.example.service.vehicle.VanServiceTest" target="org.example.model.vehicle.VanBuilder" relationship="CREATE">
+      <point x="0.0" y="-39.0" />
+      <point x="4301.0" y="4149.0" />
+      <point x="3481.0" y="4149.0" />
+      <point x="3481.0" y="1849.0" />
+      <point x="3101.0" y="1849.0" />
+      <point x="0.0" y="238.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.repository.ClientRepository" relationship="CREATE">
+      <point x="102.25" y="-293.0" />
+      <point x="2243.25" y="4189.0" />
+      <point x="2241.0" y="4189.0" />
+      <point x="2241.0" y="3969.0" />
+      <point x="4581.0" y="3969.0" />
+      <point x="4581.0" y="3609.0" />
+      <point x="4541.0" y="3609.0" />
+      <point x="4541.0" y="2549.0" />
+      <point x="4532.5" y="2549.0" />
+      <point x="91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.service.vehicle.VanServiceTest" target="org.example.service.vehicle.VanService" relationship="CREATE">
+      <point x="0.0" y="-39.0" />
+      <point x="4301.0" y="4149.0" />
+      <point x="3481.0" y="4149.0" />
+      <point x="3481.0" y="4069.0" />
+      <point x="4181.0" y="4069.0" />
+      <point x="4181.0" y="3689.0" />
+      <point x="4221.0" y="3689.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="org.example.controller.DateRangeSelectionController" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="0.0" y="-183.0" />
+      <point x="101.0" y="4929.0" />
+      <point x="-139.0" y="4929.0" />
+      <point x="-139.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.repository.vehicle.VehicleRepository" relationship="TO_ONE">
+      <point x="-102.25" y="-293.0" />
+      <point x="2038.75" y="4189.0" />
+      <point x="1961.0" y="4189.0" />
+      <point x="1961.0" y="3849.0" />
+      <point x="2081.0" y="3849.0" />
+      <point x="2081.0" y="3609.0" />
+      <point x="2121.0" y="3609.0" />
+      <point x="2121.0" y="2669.0" />
+      <point x="2232.25" y="2669.0" />
+      <point x="111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.CarBuilder" target="org.example.model.vehicle.Car" relationship="CREATE">
+      <point x="65.25" y="-216.0" />
+      <point x="1566.25" y="1129.0" />
+      <point x="1565.5" y="1129.0" />
+      <point x="84.5" y="117.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.service.vehicle.VanService" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="4183.25" y="4169.0" />
+      <point x="4181.0" y="4169.0" />
+      <point x="4181.0" y="3689.0" />
+      <point x="4221.0" y="3689.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="org.example.viewmodel.login.LoginViewModel" target="org.example.repository.ClientRepository" relationship="TO_ONE">
+      <point x="96.5" y="-95.0" />
+      <point x="5217.5" y="3089.0" />
+      <point x="5221.0" y="3089.0" />
+      <point x="5221.0" y="2589.0" />
+      <point x="3861.0" y="2589.0" />
+      <point x="3861.0" y="2549.0" />
+      <point x="4349.5" y="2549.0" />
+      <point x="-91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.viewmodel.login.LoginViewModel" relationship="CREATE">
+      <point x="0.0" y="-50.0" />
+      <point x="5041.0" y="5069.0" />
+      <point x="5024.5" y="5069.0" />
+      <point x="-96.5" y="95.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditTrailerViewController" target="org.example.viewmodel.vehicle.TrailerViewModel" relationship="CREATE">
+      <point x="105.5" y="-172.0" />
+      <point x="1046.5" y="3429.0" />
+      <point x="1041.0" y="3429.0" />
+      <point x="1041.0" y="2769.0" />
+      <point x="901.0" y="2769.0" />
+      <point x="901.0" y="2729.0" />
+      <point x="892.0" y="2729.0" />
+      <point x="71.0" y="260.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.controller.RefreshableBookingsController" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="998.75" y="4809.0" />
+      <point x="1001.0" y="4809.0" />
+      <point x="1001.0" y="3969.0" />
+      <point x="101.0" y="3969.0" />
+      <point x="101.0" y="3689.0" />
+      <point x="63.0" y="3689.0" />
+      <point x="62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.model.vehicle.Car" relationship="TO_MANY">
+      <point x="-102.25" y="-304.0" />
+      <point x="998.75" y="4809.0" />
+      <point x="1001.0" y="4809.0" />
+      <point x="1001.0" y="3869.0" />
+      <point x="701.0" y="3869.0" />
+      <point x="701.0" y="2749.0" />
+      <point x="981.0" y="2749.0" />
+      <point x="981.0" y="1129.0" />
+      <point x="1396.5" y="1129.0" />
+      <point x="-84.5" y="117.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VehicleRepository" target="org.example.repository.vehicle.VanRepository" relationship="CREATE">
+      <point x="-111.25" y="-183.0" />
+      <point x="2009.75" y="2229.0" />
+      <point x="2001.0" y="2229.0" />
+      <point x="2001.0" y="2029.0" />
+      <point x="2326.5" y="2029.0" />
+      <point x="-94.5" y="50.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditCarViewController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="104.5" y="-172.0" />
+      <point x="1605.5" y="2969.0" />
+      <point x="1761.0" y="2969.0" />
+      <point x="1761.0" y="2909.0" />
+      <point x="2001.0" y="2909.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Trailer" target="org.example.model.vehicle.Vehicle" relationship="GENERALIZATION">
+      <point x="0.0" y="-150.0" />
+      <point x="2561.0" y="689.0" />
+      <point x="3061.0" y="689.0" />
+      <point x="3061.0" y="629.0" />
+      <point x="3060.75" y="629.0" />
+      <point x="-80.25" y="161.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.repository.BookingsRepository" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="1203.25" y="4169.0" />
+      <point x="2161.0" y="4169.0" />
+      <point x="2161.0" y="3989.0" />
+      <point x="3701.0" y="3989.0" />
+      <point x="3701.0" y="3769.0" />
+      <point x="3694.75" y="3769.0" />
+      <point x="-106.25" y="117.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="102.25" y="-293.0" />
+      <point x="2243.25" y="4189.0" />
+      <point x="2241.0" y="4189.0" />
+      <point x="2241.0" y="3969.0" />
+      <point x="2201.0" y="3969.0" />
+      <point x="2201.0" y="2949.0" />
+      <point x="2001.0" y="2949.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.CarViewController" target="org.example.viewmodel.vehicle.CarViewModel" relationship="TO_MANY">
+      <point x="-96.25" y="-183.0" />
+      <point x="1724.75" y="2989.0" />
+      <point x="1621.0" y="2989.0" />
+      <point x="1621.0" y="2769.0" />
+      <point x="1618.25" y="2769.0" />
+      <point x="-82.75" y="293.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.VanBuilder" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="65.75" y="-238.0" />
+      <point x="3166.75" y="1109.0" />
+      <point x="3321.0" y="1109.0" />
+      <point x="3321.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.TrailerViewController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="103.5" y="-183.0" />
+      <point x="524.5" y="3389.0" />
+      <point x="901.0" y="3389.0" />
+      <point x="901.0" y="2829.0" />
+      <point x="2001.0" y="2829.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.repository.ClientRepository" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="1203.25" y="4169.0" />
+      <point x="2161.0" y="4169.0" />
+      <point x="2161.0" y="3889.0" />
+      <point x="4541.0" y="3889.0" />
+      <point x="4541.0" y="2549.0" />
+      <point x="4532.5" y="2549.0" />
+      <point x="91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.controller.RefreshableBookingsController" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="3978.75" y="4129.0" />
+      <point x="2001.0" y="4129.0" />
+      <point x="2001.0" y="3929.0" />
+      <point x="101.0" y="3929.0" />
+      <point x="101.0" y="3689.0" />
+      <point x="63.0" y="3689.0" />
+      <point x="62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.TrailerBuilder" target="org.example.model.vehicle.Trailer" relationship="CREATE">
+      <point x="69.25" y="-216.0" />
+      <point x="2170.25" y="1129.0" />
+      <point x="2478.0" y="1129.0" />
+      <point x="-83.0" y="150.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditVanViewController" target="org.example.model.vehicle.VanBuilder" relationship="CREATE">
+      <point x="-105.75" y="-183.0" />
+      <point x="3095.25" y="2989.0" />
+      <point x="3101.0" y="2989.0" />
+      <point x="0.0" y="238.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="998.75" y="4809.0" />
+      <point x="1001.0" y="4809.0" />
+      <point x="1001.0" y="3869.0" />
+      <point x="141.0" y="3869.0" />
+      <point x="141.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.service.BookingsService" target="org.example.viewmodel.BookingViewModel" relationship="CREATE">
+      <point x="88.0" y="-95.0" />
+      <point x="4589.0" y="4389.0" />
+      <point x="4661.0" y="4389.0" />
+      <point x="4661.0" y="3929.0" />
+      <point x="4763.25" y="3929.0" />
+      <point x="-77.75" y="194.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditCarViewController" target="org.example.viewmodel.vehicle.CarViewModel" relationship="CREATE">
+      <point x="104.5" y="-172.0" />
+      <point x="1605.5" y="2969.0" />
+      <point x="1761.0" y="2969.0" />
+      <point x="1761.0" y="2869.0" />
+      <point x="1801.0" y="2869.0" />
+      <point x="1801.0" y="2769.0" />
+      <point x="1783.75" y="2769.0" />
+      <point x="82.75" y="293.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VehicleRepository" target="org.example.repository.vehicle.TrailerRepository" relationship="CREATE">
+      <point x="-111.25" y="-183.0" />
+      <point x="2009.75" y="2229.0" />
+      <point x="2001.0" y="2229.0" />
+      <point x="2001.0" y="2029.0" />
+      <point x="1999.75" y="2029.0" />
+      <point x="-101.25" y="50.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.CarViewController" target="org.example.viewmodel.vehicle.CarViewModel" relationship="CREATE">
+      <point x="96.25" y="-183.0" />
+      <point x="1917.25" y="2989.0" />
+      <point x="1921.0" y="2989.0" />
+      <point x="1921.0" y="2949.0" />
+      <point x="1801.0" y="2949.0" />
+      <point x="1801.0" y="2769.0" />
+      <point x="1783.75" y="2769.0" />
+      <point x="82.75" y="293.0" />
+    </edge>
+    <edge source="org.example.controller.BookingsViewController" target="org.example.service.BookingsService" relationship="CREATE">
+      <point x="0.0" y="-183.0" />
+      <point x="4061.0" y="5509.0" />
+      <point x="4421.0" y="5509.0" />
+      <point x="4421.0" y="4629.0" />
+      <point x="4413.0" y="4629.0" />
+      <point x="-88.0" y="95.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.CarRepository" target="org.example.model.vehicle.CarBuilder" relationship="CREATE">
+      <point x="0.0" y="-50.0" />
+      <point x="1781.0" y="1669.0" />
+      <point x="1501.0" y="1669.0" />
+      <point x="0.0" y="216.0" />
+    </edge>
+    <edge source="org.example.controller.client.ClientViewController" target="org.example.service.BookingsService" relationship="CREATE">
+      <point x="0.0" y="-161.0" />
+      <point x="4681.0" y="5509.0" />
+      <point x="4421.0" y="5509.0" />
+      <point x="4421.0" y="4629.0" />
+      <point x="4413.0" y="4629.0" />
+      <point x="-88.0" y="95.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.TrailerViewController" target="org.example.viewmodel.vehicle.TrailerViewModel" relationship="CREATE">
+      <point x="103.5" y="-183.0" />
+      <point x="524.5" y="3389.0" />
+      <point x="901.0" y="3389.0" />
+      <point x="901.0" y="2729.0" />
+      <point x="892.0" y="2729.0" />
+      <point x="71.0" y="260.0" />
+    </edge>
+    <edge source="org.example.controller.admin.AdminViewController" target="org.example.viewmodel.admin.AdminViewModel" relationship="TO_ONE">
+      <point x="0.0" y="-84.0" />
+      <point x="5361.0" y="4349.0" />
+      <point x="5668.25" y="4349.0" />
+      <point x="67.25" y="62.0" />
+    </edge>
+    <edge source="org.example.util.logger.SingletonLog" target="org.example.util.logger.LogLine" relationship="CREATE">
+      <point x="-57.75" y="-106.0" />
+      <point x="803.25" y="5609.0" />
+      <point x="807.0" y="5609.0" />
+      <point x="-34.0" y="62.0" />
+    </edge>
+    <edge source="org.example.viewmodel.login.LoginViewModel" target="org.example.model.client.Client" relationship="CREATE">
+      <point x="-96.5" y="-95.0" />
+      <point x="5024.5" y="3089.0" />
+      <point x="5021.0" y="3089.0" />
+      <point x="5021.0" y="2349.0" />
+      <point x="4441.0" y="2349.0" />
+      <point x="4441.0" y="2069.0" />
+      <point x="4446.25" y="2069.0" />
+      <point x="-54.75" y="106.0" />
+    </edge>
+    <edge source="org.example.repository.BookingsRepository" target="org.example.repository.vehicle.VehicleRepository" relationship="TO_ONE">
+      <point x="-106.25" y="-117.0" />
+      <point x="3694.75" y="3489.0" />
+      <point x="3701.0" y="3489.0" />
+      <point x="3701.0" y="2829.0" />
+      <point x="2121.0" y="2829.0" />
+      <point x="2121.0" y="2669.0" />
+      <point x="2232.25" y="2669.0" />
+      <point x="111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditCarViewController" target="org.example.viewmodel.vehicle.CarViewModel" relationship="TO_MANY">
+      <point x="-104.5" y="-172.0" />
+      <point x="1396.5" y="2989.0" />
+      <point x="1621.0" y="2989.0" />
+      <point x="1621.0" y="2769.0" />
+      <point x="1618.25" y="2769.0" />
+      <point x="-82.75" y="293.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.repository.vehicle.VehicleRepository" relationship="TO_ONE">
+      <point x="-102.25" y="-304.0" />
+      <point x="3978.75" y="4129.0" />
+      <point x="2001.0" y="4129.0" />
+      <point x="2001.0" y="3909.0" />
+      <point x="2121.0" y="3909.0" />
+      <point x="2121.0" y="2669.0" />
+      <point x="2232.25" y="2669.0" />
+      <point x="111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.repository.BookingsRepository" target="org.example.repository.ClientRepository" relationship="CREATE">
+      <point x="106.25" y="-117.0" />
+      <point x="3907.25" y="3489.0" />
+      <point x="3901.0" y="3489.0" />
+      <point x="3901.0" y="2829.0" />
+      <point x="4541.0" y="2829.0" />
+      <point x="4541.0" y="2549.0" />
+      <point x="4532.5" y="2549.0" />
+      <point x="91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.controller.BookingsViewController" target="org.example.viewmodel.BookingViewModel" relationship="TO_MANY">
+      <point x="128.66666666666669" y="-183.0" />
+      <point x="4189.666666666667" y="5529.0" />
+      <point x="4581.0" y="5529.0" />
+      <point x="4581.0" y="5389.0" />
+      <point x="4901.0" y="5389.0" />
+      <point x="4901.0" y="5129.0" />
+      <point x="4921.0" y="5129.0" />
+      <point x="4921.0" y="3849.0" />
+      <point x="4918.75" y="3849.0" />
+      <point x="77.75" y="194.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VehicleRepository" target="org.example.repository.vehicle.TrailerRepository" relationship="TO_ONE">
+      <point x="111.25" y="-183.0" />
+      <point x="2232.25" y="2229.0" />
+      <point x="2241.0" y="2229.0" />
+      <point x="2241.0" y="2009.0" />
+      <point x="2202.25" y="2009.0" />
+      <point x="101.25" y="50.0" />
+    </edge>
+    <edge source="org.example.viewmodel.login.LoginViewModel" target="org.example.model.client.Client" relationship="TO_MANY">
+      <point x="96.5" y="-95.0" />
+      <point x="5217.5" y="3089.0" />
+      <point x="5221.0" y="3089.0" />
+      <point x="5221.0" y="3069.0" />
+      <point x="5381.0" y="3069.0" />
+      <point x="5381.0" y="2069.0" />
+      <point x="4555.75" y="2069.0" />
+      <point x="54.75" y="106.0" />
+    </edge>
+    <edge source="org.example.util.logger.SingletonLog" target="org.example.util.logger.LogLine" relationship="TO_MANY">
+      <point x="57.75" y="-106.0" />
+      <point x="918.75" y="5609.0" />
+      <point x="875.0" y="5609.0" />
+      <point x="34.0" y="62.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableCarsController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="102.25" y="-304.0" />
+      <point x="1203.25" y="4169.0" />
+      <point x="2161.0" y="4169.0" />
+      <point x="2161.0" y="2949.0" />
+      <point x="2001.0" y="2949.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.repository.BookingsRepository" relationship="CREATE">
+      <point x="102.25" y="-293.0" />
+      <point x="2243.25" y="4189.0" />
+      <point x="2241.0" y="4189.0" />
+      <point x="2241.0" y="4009.0" />
+      <point x="3701.0" y="4009.0" />
+      <point x="3701.0" y="3769.0" />
+      <point x="3694.75" y="3769.0" />
+      <point x="-106.25" y="117.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.service.vehicle.TrailerService" relationship="CREATE">
+      <point x="102.25" y="-293.0" />
+      <point x="2243.25" y="4189.0" />
+      <point x="2241.0" y="4189.0" />
+      <point x="2241.0" y="3969.0" />
+      <point x="2381.0" y="3969.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="org.example.model.Booking" target="org.example.model.vehicle.Vehicle" relationship="TO_ONE">
+      <point x="0.0" y="-128.0" />
+      <point x="5201.0" y="2289.0" />
+      <point x="4641.0" y="2289.0" />
+      <point x="4641.0" y="709.0" />
+      <point x="3221.25" y="709.0" />
+      <point x="80.25" y="161.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditTrailerViewController" target="org.example.model.vehicle.TrailerBuilder" relationship="CREATE">
+      <point x="105.5" y="-172.0" />
+      <point x="1046.5" y="3429.0" />
+      <point x="1041.0" y="3429.0" />
+      <point x="1041.0" y="1689.0" />
+      <point x="2101.0" y="1689.0" />
+      <point x="0.0" y="216.0" />
+    </edge>
+    <edge source="org.example.controller.client.ClientViewController" target="org.example.viewmodel.BookingViewModel" relationship="TO_MANY">
+      <point x="128.66666666666669" y="-161.0" />
+      <point x="4809.666666666667" y="5929.0" />
+      <point x="4801.0" y="5929.0" />
+      <point x="4801.0" y="5589.0" />
+      <point x="4941.0" y="5589.0" />
+      <point x="4941.0" y="5129.0" />
+      <point x="4921.0" y="5129.0" />
+      <point x="4921.0" y="3849.0" />
+      <point x="4918.75" y="3849.0" />
+      <point x="77.75" y="194.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.VehicleRepository" target="org.example.repository.vehicle.CarRepository" relationship="TO_ONE">
+      <point x="111.25" y="-183.0" />
+      <point x="2232.25" y="2229.0" />
+      <point x="2241.0" y="2229.0" />
+      <point x="2241.0" y="2009.0" />
+      <point x="1874.25" y="2009.0" />
+      <point x="93.25" y="50.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditTrailerViewController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="105.5" y="-172.0" />
+      <point x="1046.5" y="3429.0" />
+      <point x="1041.0" y="3429.0" />
+      <point x="1041.0" y="2849.0" />
+      <point x="2001.0" y="2849.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditCarViewController" target="org.example.model.vehicle.CarBuilder" relationship="CREATE">
+      <point x="104.5" y="-172.0" />
+      <point x="1605.5" y="2969.0" />
+      <point x="1761.0" y="2969.0" />
+      <point x="1761.0" y="2949.0" />
+      <point x="1501.0" y="2949.0" />
+      <point x="0.0" y="216.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableVansController" target="org.example.model.vehicle.Van" relationship="TO_MANY">
+      <point x="-102.25" y="-304.0" />
+      <point x="3978.75" y="4129.0" />
+      <point x="2001.0" y="4129.0" />
+      <point x="2001.0" y="3909.0" />
+      <point x="3441.0" y="3909.0" />
+      <point x="3441.0" y="1089.0" />
+      <point x="3204.25" y="1089.0" />
+      <point x="83.25" y="139.0" />
+    </edge>
+    <edge source="org.example.network.Server" target="org.example.network.ClientHandler" relationship="CREATE">
+      <point x="0.0" y="-62.0" />
+      <point x="0.0" y="73.0" />
+    </edge>
+    <edge source="org.example.repository.vehicle.TrailerRepository" target="org.example.model.vehicle.TrailerBuilder" relationship="CREATE">
+      <point x="0.0" y="-50.0" />
+      <point x="0.0" y="216.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="-102.25" y="-293.0" />
+      <point x="2038.75" y="4189.0" />
+      <point x="1961.0" y="4189.0" />
+      <point x="1961.0" y="3849.0" />
+      <point x="181.0" y="3849.0" />
+      <point x="181.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.controller.BookingsViewController" target="org.example.controller.RefreshableBookingsController" relationship="REALIZATION">
+      <point x="-128.66666666666669" y="-183.0" />
+      <point x="3932.3333333333335" y="5529.0" />
+      <point x="321.0" y="5529.0" />
+      <point x="321.0" y="4909.0" />
+      <point x="61.0" y="4909.0" />
+      <point x="61.0" y="3689.0" />
+      <point x="-61.0" y="3689.0" />
+      <point x="-62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Vehicle" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="0.0" y="-161.0" />
+      <point x="3141.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.service.BookingsService" target="org.example.repository.BookingsRepository" relationship="CREATE">
+      <point x="88.0" y="-95.0" />
+      <point x="4589.0" y="4389.0" />
+      <point x="4661.0" y="4389.0" />
+      <point x="4661.0" y="4029.0" />
+      <point x="3701.0" y="4029.0" />
+      <point x="3701.0" y="3769.0" />
+      <point x="3694.75" y="3769.0" />
+      <point x="-106.25" y="117.0" />
+    </edge>
+    <edge source="org.example.controller.client.ClientViewController" target="org.example.controller.RefreshableBookingsController" relationship="REALIZATION">
+      <point x="-128.66666666666669" y="-161.0" />
+      <point x="4552.333333333333" y="5469.0" />
+      <point x="361.0" y="5469.0" />
+      <point x="361.0" y="4909.0" />
+      <point x="61.0" y="4909.0" />
+      <point x="61.0" y="3689.0" />
+      <point x="-61.0" y="3689.0" />
+      <point x="-62.0" y="27.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.VanViewController" target="org.example.viewmodel.vehicle.VanViewModel" relationship="TO_MANY">
+      <point x="100.25" y="-194.0" />
+      <point x="2961.25" y="2789.0" />
+      <point x="2961.0" y="2789.0" />
+      <point x="2961.0" y="2769.0" />
+      <point x="2952.0" y="2769.0" />
+      <point x="71.0" y="293.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.model.vehicle.Trailer" relationship="TO_MANY">
+      <point x="-102.25" y="-293.0" />
+      <point x="2038.75" y="4189.0" />
+      <point x="1961.0" y="4189.0" />
+      <point x="1961.0" y="3849.0" />
+      <point x="2641.0" y="3849.0" />
+      <point x="2641.0" y="1349.0" />
+      <point x="2644.0" y="1349.0" />
+      <point x="83.0" y="150.0" />
+    </edge>
+    <edge source="org.example.controller.LoginViewController" target="org.example.viewmodel.admin.AdminViewModel" relationship="CREATE">
+      <point x="68.5" y="-150.0" />
+      <point x="5269.5" y="4329.0" />
+      <point x="5533.75" y="4329.0" />
+      <point x="-67.25" y="62.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.CarViewController" target="org.example.repository.vehicle.VehicleRepository" relationship="CREATE">
+      <point x="96.25" y="-183.0" />
+      <point x="1917.25" y="2989.0" />
+      <point x="1921.0" y="2989.0" />
+      <point x="1921.0" y="2969.0" />
+      <point x="2001.0" y="2969.0" />
+      <point x="2001.0" y="2669.0" />
+      <point x="2009.75" y="2669.0" />
+      <point x="-111.25" y="183.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.addEdit.AddEditTrailerViewController" target="org.example.viewmodel.vehicle.TrailerViewModel" relationship="TO_MANY">
+      <point x="-105.5" y="-172.0" />
+      <point x="835.5" y="3409.0" />
+      <point x="321.0" y="3409.0" />
+      <point x="321.0" y="2729.0" />
+      <point x="750.0" y="2729.0" />
+      <point x="-71.0" y="260.0" />
+    </edge>
+    <edge source="org.example.viewmodel.login.LoginViewModel" target="org.example.repository.ClientRepository" relationship="CREATE">
+      <point x="-96.5" y="-95.0" />
+      <point x="5024.5" y="3089.0" />
+      <point x="5021.0" y="3089.0" />
+      <point x="5021.0" y="3069.0" />
+      <point x="4541.0" y="3069.0" />
+      <point x="4541.0" y="2549.0" />
+      <point x="4532.5" y="2549.0" />
+      <point x="91.5" y="72.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.CarBuilder" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="-65.25" y="-216.0" />
+      <point x="1435.75" y="1109.0" />
+      <point x="1281.0" y="1109.0" />
+      <point x="1281.0" y="229.0" />
+      <point x="1.0" y="229.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="org.example.controller.vehicle.available.AvailableTrailersController" target="org.example.repository.ClientRepository" relationship="TO_ONE">
+      <point x="-102.25" y="-293.0" />
+      <point x="2038.75" y="4189.0" />
+      <point x="1961.0" y="4189.0" />
+      <point x="1961.0" y="3849.0" />
+      <point x="3561.0" y="3849.0" />
+      <point x="3561.0" y="3149.0" />
+      <point x="3861.0" y="3149.0" />
+      <point x="3861.0" y="2549.0" />
+      <point x="4349.5" y="2549.0" />
+      <point x="-91.5" y="72.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6619178259325592" showDependencies="true" x="3367.1777489567194" y="3746.2243200000003" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
