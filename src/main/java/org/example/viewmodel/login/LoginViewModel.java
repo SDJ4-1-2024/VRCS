@@ -44,8 +44,11 @@ public class LoginViewModel {
         ClientType type = ClientType.valueOf(clientType.toUpperCase());
         Client client = new Client(phone, password, ClientType.valueOf(clientType));
         if (clientRepository.prepareClientIdByPhoneNumber(phone).isEmpty()){
-            clientRepository.saveClient(client);
-            clients.put(phone, new Client(phone, password, type));
+            boolean wasClientSaved = clientRepository.saveClient(client);
+            if (wasClientSaved){
+                clients.put(phone, new Client(phone, password, type));
+                PopUpUtil.popUpInfo("Account creation success", "Your client account has been created. You can sign in now");
+            }
         } else {
             PopUpUtil.popUpError("User already exists", "Check your phone number or try to sign in to already existing account");
         }
