@@ -42,6 +42,10 @@ public class LoginViewModel {
 
     public void signUp(String phone, String password, String clientType) {
         ClientType type = ClientType.valueOf(clientType.toUpperCase());
+        if (!phone.matches("[0-9]+") || phone.length() < 3){
+            PopUpUtil.popUpError("Phone number error", "Phone number needs to be at least 3 digits and only numeric characters");
+            return;
+        }
         Client client = new Client(phone, password, ClientType.valueOf(clientType));
         if (clientRepository.prepareClientIdByPhoneNumber(phone).isEmpty()){
             boolean wasClientSaved = clientRepository.saveClient(client);

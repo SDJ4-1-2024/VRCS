@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.addEdit.AddEditCarViewController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.vehicle.addEdit.AddCarViewController" alignment="CENTER" spacing="10">
     <Label text="Car Details"/>
     <TextField fx:id="makeField" promptText="Make"/>
     <TextField fx:id="brandField" promptText="Brand"/>

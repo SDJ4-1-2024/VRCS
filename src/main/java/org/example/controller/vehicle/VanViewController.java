@@ -2,14 +2,17 @@ package org.example.controller.vehicle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.controller.vehicle.addEdit.AddEditVanViewController;
+import org.example.controller.vehicle.addEdit.AddVanViewController;
+import org.example.controller.vehicle.addEdit.EditVanController;
 import org.example.model.vehicle.Van;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.viewmodel.vehicle.VanViewModel;
@@ -37,6 +40,7 @@ public class VanViewController {
     @FXML
     private TableColumn<VanViewModel, Integer> pricePerDayColumn;
     private ObservableList<VanViewModel> vansData;
+    VehicleRepository vehicleRepository;
 
     public void initialize() {
         vansData = FXCollections.observableArrayList();
@@ -50,11 +54,13 @@ public class VanViewController {
         hpColumn.setCellValueFactory(cellData -> cellData.getValue().hpProperty().asObject());
         pricePerDayColumn.setCellValueFactory(cellData -> cellData.getValue().pricePerDayProperty().asObject());
 
-        VehicleRepository vehicleRepository = new VehicleRepository();
-        prepareVans(vehicleRepository.loadVans());
+        vehicleRepository = new VehicleRepository();
+        prepareVans();
     }
 
-    private void prepareVans(List<Van> vans) {
+    private void prepareVans() {
+        List<Van> vans = vehicleRepository.loadVans();
+        vansData.clear();
         for (Van van : vans) {
             vansData.add(new VanViewModel(van));
         }
@@ -76,10 +82,10 @@ public class VanViewController {
 
     private void openVanDialog(VanViewModel vanViewModel) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/AddEditVanView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/AddVanView.fxml"));
             Parent root = loader.load();
 
-            AddEditVanViewController controller = loader.getController();
+            AddVanViewController controller = loader.getController();
             controller.setViewModel(vansData, vanViewModel);
 
             Stage stage = new Stage();
@@ -88,6 +94,31 @@ public class VanViewController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void editVan() {
+        VanViewModel selectedVan = vanTable.getSelectionModel().getSelectedItem();
+        if (selectedVan != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/EditVan.fxml"));
+                Parent root = loader.load();
+
+                EditVanController controller = loader.getController();
+                controller.setVan(selectedVan);
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Edit Van");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+
+                prepareVans();
+                vanTable.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

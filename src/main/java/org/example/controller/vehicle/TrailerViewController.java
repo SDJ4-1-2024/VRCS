@@ -8,8 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.controller.vehicle.addEdit.AddEditTrailerViewController;
+import org.example.controller.vehicle.addEdit.AddTrailerViewController;
+import org.example.controller.vehicle.addEdit.EditTrailerController;
 import org.example.model.vehicle.Trailer;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.viewmodel.vehicle.TrailerViewModel;
@@ -35,6 +37,7 @@ public class TrailerViewController {
     @FXML
     private TableColumn<TrailerViewModel, Integer> pricePerDayColumn;
     private ObservableList<TrailerViewModel> trailerData;
+    VehicleRepository vehicleRepository;
 
     public void initialize() {
         trailerData = FXCollections.observableArrayList();
@@ -46,11 +49,13 @@ public class TrailerViewController {
         carryingCapacityColumn.setCellValueFactory(cellData -> cellData.getValue().carryingCapacityProperty().asObject());
         pricePerDayColumn.setCellValueFactory(cellData -> cellData.getValue().pricePerDayProperty().asObject());
 
-        VehicleRepository vehicleRepository = new VehicleRepository();
-        prepareTrailers(vehicleRepository.loadTrailers());
+        vehicleRepository = new VehicleRepository();
+        prepareTrailers();
     }
 
-    private void prepareTrailers(List<Trailer> trailers) {
+    private void prepareTrailers() {
+        List<Trailer> trailers = vehicleRepository.loadTrailers();
+        trailerData.clear();
         for (Trailer trailer : trailers) {
             trailerData.add(new TrailerViewModel(trailer));
         }
@@ -72,10 +77,10 @@ public class TrailerViewController {
 
     private void openTrailerDialog(TrailerViewModel trailerViewModel) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/AddEditTrailerView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/AddTrailerView.fxml"));
             Parent root = loader.load();
 
-            AddEditTrailerViewController controller = loader.getController();
+            AddTrailerViewController controller = loader.getController();
             controller.setViewModel(trailerData, trailerViewModel);
 
             Stage stage = new Stage();
@@ -84,6 +89,31 @@ public class TrailerViewController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void editTrailer() {
+        TrailerViewModel selectedTrailer = trailerTable.getSelectionModel().getSelectedItem();
+        if (selectedTrailer != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vehicle/addEdit/EditTrailer.fxml"));
+                Parent root = loader.load();
+
+                EditTrailerController controller = loader.getController();
+                controller.setTrailer(selectedTrailer);
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Edit Trailer");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+
+                prepareTrailers();
+                trailerTable.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

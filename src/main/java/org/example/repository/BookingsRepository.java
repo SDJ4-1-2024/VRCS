@@ -105,28 +105,6 @@ public class BookingsRepository {
         }
     }
 
-    public Optional<Integer> getBookingId(LocalDate startDate, LocalDate endDate, String phoneNumber, String registrationPlate) {
-
-        String query = "SELECT b.id FROM bookings b JOIN clients c ON b.client_id = c.id JOIN vehicles v ON b.vehicle_id = v.id WHERE b.start_date = ? AND b.end_date = ? AND c.phone_number = ? AND v.registration_plate = ?";
-
-        try (Connection conn = DatabaseUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setDate(1, java.sql.Date.valueOf(startDate));
-            stmt.setDate(2, java.sql.Date.valueOf(endDate));
-            stmt.setString(3, phoneNumber);
-            stmt.setString(4, registrationPlate);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return Optional.of(rs.getInt("id"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return Optional.empty();
-    }
-
     public void removeBooking(Date startDate, Date endDate, Integer vehicleId, Integer clientId) {
         String query = "DELETE FROM bookings WHERE start_date = ? AND end_date = ? AND client_id = ? AND vehicle_id = ?";
 

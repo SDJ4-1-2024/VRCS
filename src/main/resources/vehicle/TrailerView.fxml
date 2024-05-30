@@ -19,6 +19,7 @@
     <HBox spacing="10">
         <Button text="Remove Selected Trailer" onAction="#removeTrailer"/>
         <Button text="Add Trailer" onAction="#addTrailer"/>
+        <Button text="Edit Selected Trailer" onAction="#editTrailer"/>
     </HBox>
 </VBox>
 

@@ -16,10 +16,12 @@ import org.example.repository.BookingsRepository;
 import org.example.repository.ClientRepository;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.service.vehicle.TrailerService;
+import org.example.util.ClientUtils;
 import org.example.util.LocalDateConverter;
 import org.example.util.PopUpUtil;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.prefs.Preferences;
@@ -69,6 +71,14 @@ public class AvailableTrailersController {
 
         vehicleRepository = new VehicleRepository();
         clientRepository = new ClientRepository();
+
+        setPhoneTFVisibility();
+    }
+
+    private void setPhoneTFVisibility() {
+        if (ClientUtils.isAdmin()){
+            phoneTextField.setVisible(true);
+        }
     }
 
     public void setDetails(VehicleType vehicleType, LocalDate startDate, LocalDate endDate) {
@@ -109,7 +119,11 @@ public class AvailableTrailersController {
                 int clientId = clientIdInit.orElseThrow();
                 bookingRepository.saveBooking(LocalDateConverter.convertToDatabaseColumn(startDate),
                         LocalDateConverter.convertToDatabaseColumn(endDate), trailerId, clientId);
-                PopUpUtil.popUpInfo("Booking success", selectedVehicle.getMake() + " " + selectedVehicle.getBrand() + " has been booked for: " + startDate + " to " + endDate);
+                int totalPrice = (int) (ChronoUnit.DAYS.between(startDate, endDate) * selectedVehicle.getPricePerDay());
+                PopUpUtil.popUpInfo("Booking success", selectedVehicle.getMake() + " " +
+                        selectedVehicle.getBrand() + " has been booked for: " + startDate + " to " + endDate
+                        +". For the total price of: "+ totalPrice+" You can pickup car at 10:00 on the booking start date" +
+                        " and it needs to be returned before 09:00 at the booking end date");
                 refreshableBookingsController.refreshBookings();
                 closeOrCancel();
             }
