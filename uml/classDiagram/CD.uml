@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.example.model.vehicle.Van</OriginalElement>
+  <nodes>
+    <node x="335.0" y="1179.0">org.example.model.vehicle.Trailer</node>
+    <node x="710.5" y="901.0">org.example.model.Booking</node>
+    <node x="-65.5" y="1190.0">org.example.model.vehicle.Van</node>
+    <node x="622.5" y="2053.0">org.example.model.vehicle.TrailerBuilder</node>
+    <node x="132.0" y="912.0">org.example.model.vehicle.Car</node>
+    <node x="220.5" y="488.0">org.example.model.vehicle.Vehicle</node>
+    <node x="-56.5" y="-15.0">org.example.model.vehicle.VehicleType</node>
+    <node x="847.5" y="1705.0">org.example.model.client.ClientType</node>
+    <node x="451.5" y="243.0">org.example.model.client.Client</node>
+    <node x="410.5" y="1573.0">org.example.model.vehicle.CarBuilder</node>
+    <node x="-50.5" y="2031.0">org.example.model.vehicle.VanBuilder</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.example.model.vehicle.TrailerBuilder" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="69.25" y="-215.0" />
+      <point x="830.25" y="1688.0" />
+      <point x="1081.0" y="1688.0" />
+      <point x="1081.0" y="228.0" />
+      <point x="41.0" y="228.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.CarBuilder" target="org.example.model.vehicle.Car" relationship="CREATE">
+      <point x="-65.25" y="-215.0" />
+      <point x="475.75" y="1548.0" />
+      <point x="301.0" y="1548.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Van" target="org.example.model.vehicle.Vehicle" relationship="GENERALIZATION">
+      <point x="0.0" y="-138.0" />
+      <point x="101.0" y="888.0" />
+      <point x="301.0" y="888.0" />
+      <point x="301.0" y="828.0" />
+      <point x="300.75" y="828.0" />
+      <point x="-80.25" y="160.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.VanBuilder" target="org.example.model.vehicle.Van" relationship="CREATE">
+      <point x="65.75" y="-237.0" />
+      <point x="146.75" y="2008.0" />
+      <point x="101.0" y="2008.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.VanBuilder" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="-65.75" y="-237.0" />
+      <point x="15.25" y="2008.0" />
+      <point x="-99.0" y="2008.0" />
+      <point x="-99.0" y="228.0" />
+      <point x="41.0" y="228.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Trailer" target="org.example.model.vehicle.Vehicle" relationship="GENERALIZATION">
+      <point x="0.0" y="-149.0" />
+      <point x="501.0" y="888.0" />
+      <point x="301.0" y="888.0" />
+      <point x="301.0" y="828.0" />
+      <point x="300.75" y="828.0" />
+      <point x="-80.25" y="160.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Car" target="org.example.model.vehicle.Vehicle" relationship="GENERALIZATION">
+      <point x="0.0" y="-116.0" />
+      <point x="301.0" y="828.0" />
+      <point x="300.75" y="828.0" />
+      <point x="-80.25" y="160.0" />
+    </edge>
+    <edge source="org.example.model.Booking" target="org.example.model.vehicle.Vehicle" relationship="TO_ONE">
+      <point x="0.0" y="-127.0" />
+      <point x="861.0" y="868.0" />
+      <point x="561.0" y="868.0" />
+      <point x="561.0" y="848.0" />
+      <point x="461.25" y="848.0" />
+      <point x="80.25" y="160.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.CarBuilder" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="65.25" y="-215.0" />
+      <point x="606.25" y="1528.0" />
+      <point x="1041.0" y="1528.0" />
+      <point x="1041.0" y="228.0" />
+      <point x="41.0" y="228.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.Vehicle" target="org.example.model.vehicle.VehicleType" relationship="TO_ONE">
+      <point x="0.0" y="-160.0" />
+      <point x="381.0" y="228.0" />
+      <point x="41.0" y="228.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="org.example.model.vehicle.TrailerBuilder" target="org.example.model.vehicle.Trailer" relationship="CREATE">
+      <point x="-69.25" y="-215.0" />
+      <point x="691.75" y="1548.0" />
+      <point x="501.0" y="1548.0" />
+      <point x="0.0" y="149.0" />
+    </edge>
+    <edge source="org.example.model.Booking" target="org.example.model.client.Client" relationship="TO_ONE">
+      <point x="0.0" y="-127.0" />
+      <point x="861.0" y="868.0" />
+      <point x="561.0" y="868.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.34566929133858265" showDependencies="true" x="501.0" y="1254.9999999999998" />
+  <SelectedNodes>
+    <node>org.example.model.vehicle.Van</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

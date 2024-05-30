@@ -1,0 +1,856 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AddEditCarViewController {
+  + AddEditCarViewController(): 
+  - pricePerDayField: TextField
+  - numberOfSeatsField: TextField
+  - trunkCapacityField: TextField
+  - registrationPlateField: TextField
+  - cars: ObservableList<CarViewModel>
+  - makeField: TextField
+  - hpField: TextField
+  - brandField: TextField
+  - carViewModel: CarViewModel
+  - closeDialog(): void
+  - cancel(): void
+  + setViewModel(ObservableList<CarViewModel>, CarViewModel): void
+  - saveCar(): void
+}
+class AddEditTrailerViewController {
+  + AddEditTrailerViewController(): 
+  - registrationPlateField: TextField
+  - trailers: ObservableList<TrailerViewModel>
+  - trunkSpaceWidthField: TextField
+  - brandField: TextField
+  - pricePerDayField: TextField
+  - trailerViewModel: TrailerViewModel
+  - carryingCapacityField: TextField
+  - makeField: TextField
+  - trunkSpaceHeightField: TextField
+  + setViewModel(ObservableList<TrailerViewModel>, TrailerViewModel): void
+  - saveTrailer(): void
+  - cancel(): void
+  - closeDialog(): void
+}
+class AddEditVanViewController {
+  + AddEditVanViewController(): 
+  - makeField: TextField
+  - registrationPlateField: TextField
+  - vanViewModel: VanViewModel
+  - trunkSpaceWidthField: TextField
+  - carryingCapacityField: TextField
+  - pricePerDayField: TextField
+  - vans: ObservableList<VanViewModel>
+  - brandField: TextField
+  - hpField: TextField
+  - trunkSpaceHeightField: TextField
+  - closeDialog(): void
+  - saveVan(): void
+  - cancel(): void
+  + setViewModel(ObservableList<VanViewModel>, VanViewModel): void
+}
+class AdminViewController {
+  + AdminViewController(): 
+  - viewModel: AdminViewModel
+  + setViewModel(AdminViewModel): void
+  - goToVehicleTypeSelection(): void
+  - openVehiclesView(): void
+  - openBookingsView(): void
+}
+class AdminViewModel {
+  + AdminViewModel(): 
+  - bookings: ObservableList<Booking>
+  + getBookings(): ObservableList<Booking>
+  + removeBooking(Booking): void
+}
+class AvailableCarsController {
+  + AvailableCarsController(): 
+  - startDate: LocalDate
+  - refreshableBookingsController: RefreshableBookingsController
+  - numberOfSeats: TableColumn<Car, Integer>
+  - registrationPlateColumn: TableColumn<Car, String>
+  - vehicleType: VehicleType
+  - pricePerDayColumn: TableColumn<Car, Integer>
+  - trunkCapacity: TableColumn<Car, Integer>
+  - makeColumn: TableColumn<Car, String>
+  - brandColumn: TableColumn<Car, String>
+  - phoneTextField: TextField
+  - availableCarsTable: TableView<Car>
+  - availableCarsData: ObservableList<Car>
+  ~ vehicleRepository: VehicleRepository
+  - vehicleTypeColumn: TableColumn<Car, String>
+  - endDate: LocalDate
+  ~ clientRepository: ClientRepository
+  - hp: TableColumn<Car, Integer>
+  - loadAvailableVehicles(): void
+  - prepareAvailableCars(List<Car>): void
+  + setDetails(VehicleType, LocalDate, LocalDate): void
+  + initialize(): void
+  - setPhoneTFVisibility(): void
+  + setRefreshableBookingsController(RefreshableBookingsController): void
+  - closeOrCancel(): void
+  - bookCar(): void
+}
+class AvailableTrailersController {
+  + AvailableTrailersController(): 
+  - startDate: LocalDate
+  - brandColumn: TableColumn<Trailer, String>
+  + phoneTextField: TextField
+  - refreshableBookingsController: RefreshableBookingsController
+  - trunkSpaceHeightColumn: TableColumn<Trailer, Integer>
+  - availableTrailersData: ObservableList<Trailer>
+  - makeColumn: TableColumn<Trailer, String>
+  - vehicleType: VehicleType
+  - carryingCapacityColumn: TableColumn<Trailer, Integer>
+  - vehicleTypeColumn: TableColumn<Trailer, String>
+  - trunkSpaceWidthColumn: TableColumn<Trailer, Integer>
+  ~ vehicleRepository: VehicleRepository
+  - availableTrailersTable: TableView<Trailer>
+  - pricePerDayColumn: TableColumn<Trailer, Integer>
+  - endDate: LocalDate
+  - registrationPlateColumn: TableColumn<Trailer, String>
+  ~ clientRepository: ClientRepository
+  - prepareAvailableTrailers(List<Trailer>): void
+  + setDetails(VehicleType, LocalDate, LocalDate): void
+  - loadAvailableVehicles(): void
+  + initialize(): void
+  - closeOrCancel(): void
+  + setRefreshableBookingsController(RefreshableBookingsController): void
+  - bookTrailer(): void
+}
+class AvailableVansController {
+  + AvailableVansController(): 
+  - trunkSpaceHeightColumn: TableColumn<Van, Integer>
+  - availableVansData: ObservableList<Van>
+  ~ clientRepository: ClientRepository
+  - hpColumn: TableColumn<Van, Integer>
+  - trunkSpaceWidthColumn: TableColumn<Van, Integer>
+  + phoneTextField: TextField
+  - startDate: LocalDate
+  ~ vehicleRepository: VehicleRepository
+  - vehicleTypeColumn: TableColumn<Van, String>
+  - carryingCapacityColumn: TableColumn<Van, Integer>
+  - pricePerDayColumn: TableColumn<Van, Integer>
+  - makeColumn: TableColumn<Van, String>
+  - vehicleType: VehicleType
+  - availableVansTable: TableView<Van>
+  - refreshableBookingsController: RefreshableBookingsController
+  - registrationPlateColumn: TableColumn<Van, String>
+  - brandColumn: TableColumn<Van, String>
+  - endDate: LocalDate
+  - bookVan(): void
+  - closeOrCancel(): void
+  + initialize(): void
+  + setDetails(VehicleType, LocalDate, LocalDate): void
+  - loadAvailableVehicles(): void
+  + setRefreshableBookingsController(RefreshableBookingsController): void
+  - prepareAvailableVans(List<Van>): void
+}
+class Booking {
+  + Booking(LocalDate, LocalDate, Vehicle, Client): 
+  - endDate: LocalDate
+  - client: Client
+  - startDate: LocalDate
+  - vehicle: Vehicle
+  + getStartDate(): LocalDate
+  + getClient(): Client
+  + getEndDate(): LocalDate
+  + isOngoing(): boolean
+  + getVehicle(): Vehicle
+}
+class BookingViewModel {
+  + BookingViewModel(Booking): 
+  - clientPhoneNumber: StringProperty
+  - vehicleRegistrationPlate: StringProperty
+  - vehicleType: StringProperty
+  - endDate: StringProperty
+  - startDate: StringProperty
+  + vehicleRegistrationPlateProperty(): StringProperty
+  + getVehicleRegistrationPlate(): String
+  + clientPhoneNumberProperty(): StringProperty
+  + getVehicleType(): String
+  + vehicleTypeProperty(): StringProperty
+  + endDateProperty(): StringProperty
+  + getStartDate(): String
+  + startDateProperty(): StringProperty
+  + getEndDate(): String
+  + getClientPhoneNumber(): String
+}
+class BookingsRepository {
+  + BookingsRepository(): 
+  - clientRepository: ClientRepository
+  - vehicleRepository: VehicleRepository
+  + getBookingId(LocalDate, LocalDate, String, String): Optional<Integer>
+  + loadBookings(): List<Booking>
+  + saveBooking(Date, Date, int, int): void
+  + loadBooking(int): Optional<Booking>
+  + loadBookingsByClientId(int): List<Booking>
+  + removeBooking(Date, Date, Integer, Integer): void
+}
+class BookingsService {
+  + BookingsService(): 
+  - bookingsRepository: BookingsRepository
+  + prepareBookings(): ObservableList<BookingViewModel>
+  + isRemoved(BookingViewModel): boolean
+  - isOngoing(LocalDate, LocalDate): boolean
+  - prepareVehicleId(BookingViewModel): Integer
+  - prepareClientId(BookingViewModel): Integer
+}
+class BookingsViewController {
+  + BookingsViewController(): 
+  - bookingsTableView: TableView<BookingViewModel>
+  - bookingData: ObservableList<BookingViewModel>
+  - vehicleColumn: TableColumn<BookingViewModel, String>
+  - endDateColumn: TableColumn<BookingViewModel, String>
+  - clientColumn: TableColumn<BookingViewModel, String>
+  - startDateColumn: TableColumn<BookingViewModel, String>
+  - bookingsService: BookingsService
+  - vehicleTypeColumn: TableColumn<BookingViewModel, String>
+  + initialize(): void
+  - setBookings(): void
+  + refreshBookings(): void
+  - handleAdd(): void
+  - handleEdit(): void
+  - handleRemove(): void
+}
+class Car {
+  + Car(String, String, String, VehicleType, Integer, int, int, int): 
+  - hp: int
+  - numberOfSeats: int
+  - trunkCapacity: int
+  + getTrunkCapacity(): int
+  + isBooked(): boolean
+  + getNumberOfSeats(): int
+  + getHp(): int
+  + isRented(): boolean
+}
+class CarBuilder {
+  + CarBuilder(): 
+  - pricePerDay: Integer
+  - hp: int
+  - registrationPlate: String
+  - vehicleType: VehicleType
+  - make: String
+  - brand: String
+  - trunkCapacity: int
+  - numberOfSeats: int
+  + setVehicleType(VehicleType): CarBuilder
+  + setHp(int): CarBuilder
+  + setPricePerDay(Integer): CarBuilder
+  + setRegistrationPlate(String): CarBuilder
+  + setNumberOfSeats(int): CarBuilder
+  + createCar(): Car
+  + setTrunkCapacity(int): CarBuilder
+  + setBrand(String): CarBuilder
+  + setMake(String): CarBuilder
+}
+class CarRepository {
+  + CarRepository(): 
+  + saveCar(Car, int): void
+  + prepareCarById(int, String, String, String, int): Optional<Car>
+}
+class CarService {
+  + CarService(): 
+  + castVehiclesToCars(List<Vehicle>): List<Car>
+}
+class CarViewController {
+  + CarViewController(): 
+  - numberOfSeatsColumn: TableColumn<CarViewModel, Integer>
+  - trunkCapacityColumn: TableColumn<CarViewModel, Integer>
+  - carTable: TableView<CarViewModel>
+  - makeColumn: TableColumn<CarViewModel, String>
+  - hpColumn: TableColumn<CarViewModel, Integer>
+  - brandColumn: TableColumn<CarViewModel, String>
+  - registrationPlateColumn: TableColumn<CarViewModel, String>
+  - carsData: ObservableList<CarViewModel>
+  - pricePerDayColumn: TableColumn<CarViewModel, Integer>
+  - prepareCars(List<Car>): void
+  - removeCar(): void
+  - addCar(): void
+  - openCarDialog(CarViewModel): void
+  + initialize(): void
+}
+class CarViewModel {
+  + CarViewModel(Car): 
+  - vehicleType: ObjectProperty<VehicleType>
+  - hp: IntegerProperty
+  - pricePerDay: IntegerProperty
+  - make: StringProperty
+  - brand: StringProperty
+  - numberOfSeats: IntegerProperty
+  - trunkCapacity: IntegerProperty
+  - registrationPlate: StringProperty
+  + getPricePerDay(): int
+  + brandProperty(): StringProperty
+  + getNumberOfSeats(): int
+  + getTrunkCapacity(): int
+  + vehicleTypeProperty(): ObjectProperty<VehicleType>
+  + getVehicleType(): String
+  + getBrand(): String
+  + getRegistrationPlate(): String
+  + makeProperty(): StringProperty
+  + getHp(): int
+  + getMake(): String
+  + registrationPlateProperty(): StringProperty
+  + pricePerDayProperty(): IntegerProperty
+  + numberOfSeatsProperty(): IntegerProperty
+  + trunkCapacityProperty(): IntegerProperty
+  + hpProperty(): IntegerProperty
+}
+entity Client << record >> {
+  + Client(String, String, ClientType): 
+  + Client(String, ClientType): 
+  - phoneNumber: String
+  - password: String
+  - type: ClientType
+  + type(): ClientType
+  + password(): String
+  + phoneNumber(): String
+}
+class ClientHandler {
+  + ClientHandler(Socket): 
+  - clientSocket: Socket
+  - in: BufferedReader
+  - out: PrintWriter
+  + run(): void
+}
+class ClientRepository {
+  + ClientRepository(): 
+  + prepareClients(): HashMap<String, Client>
+  + prepareClientById(int): Optional<Client>
+  + saveClient(Client): boolean
+  + prepareClientIdByPhoneNumber(String): Optional<Integer>
+}
+class ClientService {
+  + ClientService(ClientRepository): 
+  - clientRepository: ClientRepository
+}
+enum ClientType << enumeration >> {
+  + ClientType(): 
+  + PERSONAL: 
+  + ADMIN: 
+  + COMPANY: 
+  + valueOf(String): ClientType
+  + values(): ClientType[]
+}
+class ClientUtils {
+  + ClientUtils(): 
+  + isAdmin(): boolean
+  + getPhoneNumber(): String
+}
+class ClientUtilsTest {
+  + ClientUtilsTest(): 
+  - clearPhonePreference(): void
+  ~ isAdmin(): void
+}
+class ClientViewController {
+  + ClientViewController(): 
+  - endDateColumn: TableColumn<BookingViewModel, String>
+  - vehicleColumn: TableColumn<BookingViewModel, String>
+  - bookingsService: BookingsService
+  - startDateColumn: TableColumn<BookingViewModel, String>
+  - bookingsTableView: TableView<BookingViewModel>
+  - vehicleTypeColumn: TableColumn<BookingViewModel, String>
+  - bookingData: ObservableList<BookingViewModel>
+  + initialize(): void
+  - setBookings(): void
+  - goToVehicleTypeSelection(): void
+  - removeBooking(): void
+  + refreshBookings(): void
+}
+class ClientViewModel {
+  + ClientViewModel(): 
+  - bookings: ObservableList<Booking>
+  + getBookings(): ObservableList<Booking>
+  + removeBooking(Booking): void
+}
+class DatabaseUtil {
+  + DatabaseUtil(): 
+  - PROPERTIES_FILE: String
+  + getConnection(): Connection
+}
+class DateRangeSelectionController {
+  + DateRangeSelectionController(): 
+  - vehicleType: VehicleType
+  - refreshableBookingsController: RefreshableBookingsController
+  - endDatePicker: DatePicker
+  - RENTAL_DAYS_LIMIT: int
+  - WRONG_DATES_LABEL: String
+  - startDatePicker: DatePicker
+  + initialize(): void
+  - prepareCarView(LocalDate, LocalDate): void
+  - goToAvailableVehicles(): void
+  - prepareVanView(LocalDate, LocalDate): void
+  - prepareTrailerView(LocalDate, LocalDate): void
+  + setVehicleType(VehicleType): void
+  - datesAreFine(LocalDate, LocalDate): boolean
+  + setRefreshableBookingsController(RefreshableBookingsController): void
+}
+class LocalDateConverter {
+  + LocalDateConverter(): 
+  + convertToDatabaseColumn(LocalDate): Date
+  + convertToEntityAttribute(Date): LocalDate
+}
+class LogLine {
+  + LogLine(String): 
+  - text: String
+  + toString(): String
+  + getText(): String
+}
+class LoginViewController {
+  + LoginViewController(): 
+  - phoneNumberField: TextField
+  - viewModel: LoginViewModel
+  - clientTypeComboBox: ComboBox<String>
+  - passwordField: PasswordField
+  - openAdminView(): void
+  - handleLogin(): void
+  - closeLoginWindow(): void
+  + initialize(): void
+  - handleSignUp(): void
+  - openClientView(): void
+  + setViewModel(LoginViewModel): void
+}
+class LoginViewModel {
+  + LoginViewModel(): 
+  - clients: Map<String, Client>
+  - clientRepository: ClientRepository
+  - prepareClientsHashMap(ClientRepository): Map<String, Client>
+  + authenticate(String, String): boolean
+  + signUp(String, String, String): void
+  + isAdmin(String): boolean
+}
+class Main {
+  + Main(): 
+  + main(String[]): void
+  + start(Stage): void
+}
+class ManageVehicleViewModel {
+  + ManageVehicleViewModel(Vehicle): 
+  - make: StringProperty
+  - brand: StringProperty
+  - registrationPlate: StringProperty
+  - vehicleType: StringProperty
+  - pricePerDay: IntegerProperty
+  + getVehicleType(): String
+  + pricePerDayProperty(): IntegerProperty
+  + makeProperty(): StringProperty
+  + getRegistrationPlate(): String
+  + brandProperty(): StringProperty
+  + getMake(): String
+  + getPricePerDay(): Integer
+  + getBrand(): String
+  + registrationPlateProperty(): StringProperty
+  + vehicleTypeProperty(): StringProperty
+}
+class ManageVehiclesViewController {
+  + ManageVehiclesViewController(): 
+  - manageCars(): void
+  - manageVans(): void
+  - manageTrailers(): void
+  - openManagementView(String): void
+}
+class PopUpUtil {
+  + PopUpUtil(): 
+  + popUpInfo(String, String): void
+  + popUpError(String, String): void
+}
+interface RefreshableBookingsController << interface >> {
+  + refreshBookings(): void
+}
+class RentViewModel {
+  + RentViewModel(Booking): 
+  - vehicle: ObjectProperty<Vehicle>
+  - startDate: ObjectProperty<LocalDate>
+  - ongoing: BooleanProperty
+  - endDate: ObjectProperty<LocalDate>
+  - client: ObjectProperty<Client>
+  + vehicleProperty(): ObjectProperty<Vehicle>
+  + startDateProperty(): ObjectProperty<LocalDate>
+  + endDateProperty(): ObjectProperty<LocalDate>
+  + clientProperty(): ObjectProperty<Client>
+  + ongoingProperty(): BooleanProperty
+}
+class Server {
+  + Server(): 
+  - PORT: int
+  - pool: ExecutorService
+  + main(String[]): void
+}
+class SingletonLog {
+  - SingletonLog(): 
+  - logLines: ArrayList<LogLine>
+  - instance: SingletonLog
+  - lock: Lock
+  + getInstance(): SingletonLog
+  + log(): void
+  + addLog(String): void
+  + getLogLines(): ArrayList<LogLine>
+}
+class SingletonLogTest {
+  + SingletonLogTest(): 
+  ~ checkSingletonLog(): void
+}
+class Trailer {
+  + Trailer(String, String, String, VehicleType, Integer, int, int, int): 
+  - trunkSpaceHeight: int
+  - trunkSpaceWidth: int
+  - carryingCapacity: int
+  + setCarryingCapacity(int): void
+  + getTrunkSpaceWidth(): int
+  + getCarryingCapacity(): int
+  + getTrunkSpaceHeight(): int
+  + isRented(): boolean
+  + isBooked(): boolean
+  + setTrunkSpaceHeight(int): void
+  + setTrunkSpaceWidth(int): void
+}
+class TrailerBuilder {
+  + TrailerBuilder(): 
+  - trunkSpaceWidth: int
+  - pricePerDay: Integer
+  - registrationPlate: String
+  - carryingCapacity: int
+  - make: String
+  - vehicleType: VehicleType
+  - brand: String
+  - trunkSpaceHeight: int
+  + setTrunkSpaceHeight(int): TrailerBuilder
+  + setCarryingCapacity(int): TrailerBuilder
+  + setBrand(String): TrailerBuilder
+  + createTrailer(): Trailer
+  + setPricePerDay(Integer): TrailerBuilder
+  + setMake(String): TrailerBuilder
+  + setTrunkSpaceWidth(int): TrailerBuilder
+  + setVehicleType(VehicleType): TrailerBuilder
+  + setRegistrationPlate(String): TrailerBuilder
+}
+class TrailerRepository {
+  + TrailerRepository(): 
+  + saveTrailer(Trailer, int): void
+  + prepareTrailerById(int, String, String, String, int): Optional<Trailer>
+}
+class TrailerService {
+  + TrailerService(): 
+  + castVehiclesToTrailers(List<Vehicle>): List<Trailer>
+}
+class TrailerViewController {
+  + TrailerViewController(): 
+  - makeColumn: TableColumn<TrailerViewModel, String>
+  - trailerTable: TableView<TrailerViewModel>
+  - registrationPlateColumn: TableColumn<TrailerViewModel, String>
+  - trunkSpaceHeightColumn: TableColumn<TrailerViewModel, Integer>
+  - trunkSpaceWidthColumn: TableColumn<TrailerViewModel, Integer>
+  - trailerData: ObservableList<TrailerViewModel>
+  - pricePerDayColumn: TableColumn<TrailerViewModel, Integer>
+  - brandColumn: TableColumn<TrailerViewModel, String>
+  - carryingCapacityColumn: TableColumn<TrailerViewModel, Integer>
+  - prepareTrailers(List<Trailer>): void
+  + initialize(): void
+  - addTrailer(): void
+  - removeTrailer(): void
+  - openTrailerDialog(TrailerViewModel): void
+}
+class TrailerViewModel {
+  + TrailerViewModel(Trailer): 
+  - brand: StringProperty
+  - pricePerDay: IntegerProperty
+  - make: StringProperty
+  - carryingCapacity: IntegerProperty
+  - trunkSpaceHeight: IntegerProperty
+  - registrationPlate: StringProperty
+  - trunkSpaceWidth: IntegerProperty
+  + getMake(): String
+  + brandProperty(): StringProperty
+  + trunkSpaceWidthProperty(): IntegerProperty
+  + getBrand(): String
+  + getTrunkSpaceHeight(): int
+  + registrationPlateProperty(): StringProperty
+  + getRegistrationPlate(): String
+  + carryingCapacityProperty(): IntegerProperty
+  + getPricePerDay(): int
+  + getTrunkSpaceWidth(): int
+  + makeProperty(): StringProperty
+  + trunkSpaceHeightProperty(): IntegerProperty
+  + getCarryingCapacity(): int
+  + pricePerDayProperty(): IntegerProperty
+}
+class Van {
+  + Van(String, String, String, VehicleType, Integer, int, int, int, int): 
+  - hp: int
+  - trunkSpaceWidth: int
+  - carryingCapacity: int
+  - trunkSpaceHeight: int
+  + isBooked(): boolean
+  + getHp(): int
+  + isRented(): boolean
+  + getTrunkSpaceWidth(): int
+  + getCarryingCapacity(): int
+  + getTrunkSpaceHeight(): int
+}
+class VanBuilder {
+  + VanBuilder(): 
+  - make: String
+  - brand: String
+  - trunkSpaceHeight: int
+  - vehicleType: VehicleType
+  - trunkSpaceWidth: int
+  - registrationPlate: String
+  - pricePerDay: Integer
+  - carryingCapacity: int
+  - hp: int
+  + setBrand(String): VanBuilder
+  + setPricePerDay(Integer): VanBuilder
+  + setTrunkSpaceWidth(int): VanBuilder
+  + setHp(int): VanBuilder
+  + setMake(String): VanBuilder
+  + setCarryingCapacity(int): VanBuilder
+  + setRegistrationPlate(String): VanBuilder
+  + setTrunkSpaceHeight(int): VanBuilder
+  + createVan(): Van
+  + setVehicleType(VehicleType): VanBuilder
+}
+class VanRepository {
+  + VanRepository(): 
+  + prepareVanById(int, String, String, String, int): Optional<Van>
+  + saveVan(Van, int): void
+}
+class VanService {
+  + VanService(): 
+  + castVehiclesToVans(List<Vehicle>): List<Van>
+}
+class VanServiceTest {
+  + VanServiceTest(): 
+  ~ castVehiclesToCars(): void
+}
+class VanViewController {
+  + VanViewController(): 
+  - brandColumn: TableColumn<VanViewModel, String>
+  - vanTable: TableView<VanViewModel>
+  - trunkSpaceWidthColumn: TableColumn<VanViewModel, Integer>
+  - hpColumn: TableColumn<VanViewModel, Integer>
+  - registrationPlateColumn: TableColumn<VanViewModel, String>
+  - carryingCapacityColumn: TableColumn<VanViewModel, Integer>
+  - trunkSpaceHeightColumn: TableColumn<VanViewModel, Integer>
+  - pricePerDayColumn: TableColumn<VanViewModel, Integer>
+  - vansData: ObservableList<VanViewModel>
+  - makeColumn: TableColumn<VanViewModel, String>
+  - addVan(): void
+  - openVanDialog(VanViewModel): void
+  - removeVan(): void
+  + initialize(): void
+  - prepareVans(List<Van>): void
+}
+class VanViewModel {
+  + VanViewModel(Van): 
+  - carryingCapacity: IntegerProperty
+  - hp: IntegerProperty
+  - trunkSpaceHeight: IntegerProperty
+  - make: StringProperty
+  - trunkSpaceWidth: IntegerProperty
+  - registrationPlate: StringProperty
+  - brand: StringProperty
+  - pricePerDay: IntegerProperty
+  + makeProperty(): StringProperty
+  + getTrunkSpaceWidth(): int
+  + getRegistrationPlate(): String
+  + trunkSpaceHeightProperty(): IntegerProperty
+  + registrationPlateProperty(): StringProperty
+  + hpProperty(): IntegerProperty
+  + getCarryingCapacity(): int
+  + pricePerDayProperty(): IntegerProperty
+  + getMake(): String
+  + trunkSpaceWidthProperty(): IntegerProperty
+  + carryingCapacityProperty(): IntegerProperty
+  + brandProperty(): StringProperty
+  + getTrunkSpaceHeight(): int
+  + getHp(): int
+  + getPricePerDay(): int
+  + getBrand(): String
+}
+class Vehicle {
+  + Vehicle(String, String, String, VehicleType, Integer): 
+  - pricePerDay: Integer
+  - brand: String
+  - registrationPlate: String
+  - make: String
+  - vehicleType: VehicleType
+  + getMake(): String
+  + isBooked(): boolean
+  + isRented(): boolean
+  + getVehicleType(): VehicleType
+  + getPricePerDay(): Integer
+  + getBrand(): String
+  + getRegistrationPlate(): String
+}
+class VehicleRepository {
+  + VehicleRepository(): 
+  ~ trailerRepository: TrailerRepository
+  ~ vanRepository: VanRepository
+  ~ carRepository: CarRepository
+  + loadCars(): List<Car>
+  + loadVans(): List<Van>
+  + isVehicleAvailable(String): boolean
+  + prepareVehicleById(int): Vehicle
+  - prepareCompleteVehicle(ResultSet): Vehicle
+  + loadAvailableVehiclesInTimePeriodRange(LocalDate, LocalDate, VehicleType): List<Vehicle>
+  + saveVehicle(Vehicle): void
+  + loadTrailers(): List<Trailer>
+  - prepareQuery(LocalDate, LocalDate, VehicleType): String
+  + prepareVehicleIdByRegPlate(String): Optional<Integer>
+  + removeVehicle(String): void
+}
+enum VehicleType << enumeration >> {
+  + VehicleType(): 
+  + TRAILER: 
+  + CAR: 
+  + VAN: 
+  + values(): VehicleType[]
+  + valueOf(String): VehicleType
+}
+class VehicleTypeSelectionController {
+  + VehicleTypeSelectionController(): 
+  - vehicleTypeComboBox: ComboBox<String>
+  - refreshableBookingsController: RefreshableBookingsController
+  - goToDateRangeSelection(): void
+  + initialize(): void
+  + setRefreshableBookingsController(RefreshableBookingsController): void
+}
+class VehicleViewController {
+  + VehicleViewController(): 
+  - brandField: TextField
+  - vehicleTypeField: TextField
+  - bookedField: TextField
+  - rentedField: TextField
+  - viewModel: VehicleViewModel
+  - makeField: TextField
+  - registrationPlateField: TextField
+  + setViewModel(VehicleViewModel): void
+}
+class VehicleViewModel {
+  + VehicleViewModel(Vehicle): 
+  - vehicleType: ObjectProperty<VehicleType>
+  - brand: StringProperty
+  - registrationPlate: StringProperty
+  - pricePerDay: IntegerProperty
+  - make: StringProperty
+  + vehicleTypeProperty(): ObjectProperty<VehicleType>
+  + pricePerDayProperty(): IntegerProperty
+  + registrationPlateProperty(): StringProperty
+  + makeProperty(): StringProperty
+  + brandProperty(): StringProperty
+}
+
+AddEditCarViewController        -[#595959,dashed]->  CarBuilder                     : "«create»"
+AddEditCarViewController        -[#595959,dashed]->  CarViewModel                   : "«create»"
+AddEditCarViewController       "1" *-[#595959,plain]-> "cars\n*" CarViewModel                   
+AddEditCarViewController        -[#595959,dashed]->  VehicleRepository              : "«create»"
+AddEditTrailerViewController    -[#595959,dashed]->  TrailerBuilder                 : "«create»"
+AddEditTrailerViewController    -[#595959,dashed]->  TrailerViewModel               : "«create»"
+AddEditTrailerViewController   "1" *-[#595959,plain]-> "trailers\n*" TrailerViewModel               
+AddEditTrailerViewController    -[#595959,dashed]->  VehicleRepository              : "«create»"
+AddEditVanViewController        -[#595959,dashed]->  VanBuilder                     : "«create»"
+AddEditVanViewController        -[#595959,dashed]->  VanViewModel                   : "«create»"
+AddEditVanViewController       "1" *-[#595959,plain]-> "vans\n*" VanViewModel                   
+AddEditVanViewController        -[#595959,dashed]->  VehicleRepository              : "«create»"
+AdminViewController            "1" *-[#595959,plain]-> "viewModel\n1" AdminViewModel                 
+AdminViewModel                 "1" *-[#595959,plain]-> "bookings\n*" Booking                        
+AvailableCarsController         -[#595959,dashed]->  BookingsRepository             : "«create»"
+AvailableCarsController        "1" *-[#595959,plain]-> "availableCarsData\n*" Car                            
+AvailableCarsController         -[#595959,dashed]->  CarService                     : "«create»"
+AvailableCarsController        "1" *-[#595959,plain]-> "clientRepository\n1" ClientRepository               
+AvailableCarsController         -[#595959,dashed]->  ClientRepository               : "«create»"
+AvailableCarsController        "1" *-[#595959,plain]-> "refreshableBookingsController\n1" RefreshableBookingsController  
+AvailableCarsController        "1" *-[#595959,plain]-> "vehicleRepository\n1" VehicleRepository              
+AvailableCarsController         -[#595959,dashed]->  VehicleRepository              : "«create»"
+AvailableCarsController        "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+AvailableTrailersController     -[#595959,dashed]->  BookingsRepository             : "«create»"
+AvailableTrailersController    "1" *-[#595959,plain]-> "clientRepository\n1" ClientRepository               
+AvailableTrailersController     -[#595959,dashed]->  ClientRepository               : "«create»"
+AvailableTrailersController    "1" *-[#595959,plain]-> "refreshableBookingsController\n1" RefreshableBookingsController  
+AvailableTrailersController    "1" *-[#595959,plain]-> "availableTrailersData\n*" Trailer                        
+AvailableTrailersController     -[#595959,dashed]->  TrailerService                 : "«create»"
+AvailableTrailersController     -[#595959,dashed]->  VehicleRepository              : "«create»"
+AvailableTrailersController    "1" *-[#595959,plain]-> "vehicleRepository\n1" VehicleRepository              
+AvailableTrailersController    "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+AvailableVansController         -[#595959,dashed]->  BookingsRepository             : "«create»"
+AvailableVansController        "1" *-[#595959,plain]-> "clientRepository\n1" ClientRepository               
+AvailableVansController         -[#595959,dashed]->  ClientRepository               : "«create»"
+AvailableVansController        "1" *-[#595959,plain]-> "refreshableBookingsController\n1" RefreshableBookingsController  
+AvailableVansController        "1" *-[#595959,plain]-> "availableVansData\n*" Van                            
+AvailableVansController         -[#595959,dashed]->  VanService                     : "«create»"
+AvailableVansController         -[#595959,dashed]->  VehicleRepository              : "«create»"
+AvailableVansController        "1" *-[#595959,plain]-> "vehicleRepository\n1" VehicleRepository              
+AvailableVansController        "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+Booking                        "1" *-[#595959,plain]-> "client\n1" Client                         
+Booking                        "1" *-[#595959,plain]-> "vehicle\n1" Vehicle                        
+BookingsRepository              -[#595959,dashed]->  Booking                        : "«create»"
+BookingsRepository             "1" *-[#595959,plain]-> "clientRepository\n1" ClientRepository               
+BookingsRepository              -[#595959,dashed]->  ClientRepository               : "«create»"
+BookingsRepository              -[#595959,dashed]->  VehicleRepository              : "«create»"
+BookingsRepository             "1" *-[#595959,plain]-> "vehicleRepository\n1" VehicleRepository              
+BookingsService                 -[#595959,dashed]->  BookingViewModel               : "«create»"
+BookingsService                "1" *-[#595959,plain]-> "bookingsRepository\n1" BookingsRepository             
+BookingsService                 -[#595959,dashed]->  BookingsRepository             : "«create»"
+BookingsService                 -[#595959,dashed]->  ClientRepository               : "«create»"
+BookingsService                 -[#595959,dashed]->  VehicleRepository              : "«create»"
+BookingsViewController         "1" *-[#595959,plain]-> "bookingData\n*" BookingViewModel               
+BookingsViewController         "1" *-[#595959,plain]-> "bookingsService\n1" BookingsService                
+BookingsViewController          -[#595959,dashed]->  BookingsService                : "«create»"
+BookingsViewController          -[#008200,dashed]-^  RefreshableBookingsController  
+Car                             -[#000082,plain]-^  Vehicle                        
+CarBuilder                      -[#595959,dashed]->  Car                            : "«create»"
+CarBuilder                     "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+CarRepository                   -[#595959,dashed]->  CarBuilder                     : "«create»"
+CarViewController              "1" *-[#595959,plain]-> "carsData\n*" CarViewModel                   
+CarViewController               -[#595959,dashed]->  CarViewModel                   : "«create»"
+CarViewController               -[#595959,dashed]->  VehicleRepository              : "«create»"
+ClientRepository                -[#595959,dashed]->  Client                         : "«create»"
+ClientService                  "1" *-[#595959,plain]-> "clientRepository\n1" ClientRepository               
+ClientViewController           "1" *-[#595959,plain]-> "bookingData\n*" BookingViewModel               
+ClientViewController            -[#595959,dashed]->  BookingsService                : "«create»"
+ClientViewController           "1" *-[#595959,plain]-> "bookingsService\n1" BookingsService                
+ClientViewController            -[#008200,dashed]-^  RefreshableBookingsController  
+ClientViewModel                "1" *-[#595959,plain]-> "bookings\n*" Booking                        
+DateRangeSelectionController   "1" *-[#595959,plain]-> "refreshableBookingsController\n1" RefreshableBookingsController  
+DateRangeSelectionController   "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+LoginViewController             -[#595959,dashed]->  AdminViewModel                 : "«create»"
+LoginViewController            "1" *-[#595959,plain]-> "viewModel\n1" LoginViewModel                 
+LoginViewModel                  -[#595959,dashed]->  Client                         : "«create»"
+LoginViewModel                 "1" *-[#595959,plain]-> "clients\n*" Client                         
+LoginViewModel                  -[#595959,dashed]->  ClientRepository               : "«create»"
+LoginViewModel                 "1" *-[#595959,plain]-> "clientRepository\n1" ClientRepository               
+Main                            -[#595959,dashed]->  LoginViewModel                 : "«create»"
+Server                          -[#595959,dashed]->  ClientHandler                  : "«create»"
+SingletonLog                   "1" *-[#595959,plain]-> "logLines\n*" LogLine                        
+SingletonLog                    -[#595959,dashed]->  LogLine                        : "«create»"
+Trailer                         -[#000082,plain]-^  Vehicle                        
+TrailerBuilder                  -[#595959,dashed]->  Trailer                        : "«create»"
+TrailerBuilder                 "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+TrailerRepository               -[#595959,dashed]->  TrailerBuilder                 : "«create»"
+TrailerViewController          "1" *-[#595959,plain]-> "trailerData\n*" TrailerViewModel               
+TrailerViewController           -[#595959,dashed]->  TrailerViewModel               : "«create»"
+TrailerViewController           -[#595959,dashed]->  VehicleRepository              : "«create»"
+Van                             -[#000082,plain]-^  Vehicle                        
+VanBuilder                      -[#595959,dashed]->  Van                            : "«create»"
+VanBuilder                     "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+VanRepository                   -[#595959,dashed]->  VanBuilder                     : "«create»"
+VanServiceTest                  -[#595959,dashed]->  VanBuilder                     : "«create»"
+VanServiceTest                  -[#595959,dashed]->  VanService                     : "«create»"
+VanViewController              "1" *-[#595959,plain]-> "vansData\n*" VanViewModel                   
+VanViewController               -[#595959,dashed]->  VanViewModel                   : "«create»"
+VanViewController               -[#595959,dashed]->  VehicleRepository              : "«create»"
+Vehicle                        "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType                    
+VehicleRepository              "1" *-[#595959,plain]-> "carRepository\n1" CarRepository                  
+VehicleRepository               -[#595959,dashed]->  CarRepository                  : "«create»"
+VehicleRepository              "1" *-[#595959,plain]-> "trailerRepository\n1" TrailerRepository              
+VehicleRepository               -[#595959,dashed]->  TrailerRepository              : "«create»"
+VehicleRepository               -[#595959,dashed]->  VanRepository                  : "«create»"
+VehicleRepository              "1" *-[#595959,plain]-> "vanRepository\n1" VanRepository                  
+VehicleTypeSelectionController "1" *-[#595959,plain]-> "refreshableBookingsController\n1" RefreshableBookingsController  
+VehicleViewController          "1" *-[#595959,plain]-> "viewModel\n1" VehicleViewModel               
+@enduml

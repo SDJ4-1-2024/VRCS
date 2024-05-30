@@ -1,0 +1,173 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Booking {
+  + Booking(LocalDate, LocalDate, Vehicle, Client): 
+  - endDate: LocalDate
+  - client: Client
+  - startDate: LocalDate
+  - vehicle: Vehicle
+  + getStartDate(): LocalDate
+  + getClient(): Client
+  + getEndDate(): LocalDate
+  + isOngoing(): boolean
+  + getVehicle(): Vehicle
+}
+class Car {
+  + Car(String, String, String, VehicleType, Integer, int, int, int): 
+  - hp: int
+  - numberOfSeats: int
+  - trunkCapacity: int
+  + getTrunkCapacity(): int
+  + isBooked(): boolean
+  + getNumberOfSeats(): int
+  + getHp(): int
+  + isRented(): boolean
+}
+class CarBuilder {
+  + CarBuilder(): 
+  - pricePerDay: Integer
+  - hp: int
+  - registrationPlate: String
+  - vehicleType: VehicleType
+  - make: String
+  - brand: String
+  - trunkCapacity: int
+  - numberOfSeats: int
+  + setVehicleType(VehicleType): CarBuilder
+  + setHp(int): CarBuilder
+  + setPricePerDay(Integer): CarBuilder
+  + setRegistrationPlate(String): CarBuilder
+  + setNumberOfSeats(int): CarBuilder
+  + createCar(): Car
+  + setTrunkCapacity(int): CarBuilder
+  + setBrand(String): CarBuilder
+  + setMake(String): CarBuilder
+}
+entity Client << record >> {
+  + Client(String, String, ClientType): 
+  + Client(String, ClientType): 
+  - phoneNumber: String
+  - password: String
+  - type: ClientType
+  + type(): ClientType
+  + phoneNumber(): String
+  + password(): String
+}
+enum ClientType << enumeration >> {
+  + ClientType(): 
+  + PERSONAL: 
+  + ADMIN: 
+  + COMPANY: 
+  + valueOf(String): ClientType
+  + values(): ClientType[]
+}
+class Trailer {
+  + Trailer(String, String, String, VehicleType, Integer, int, int, int): 
+  - trunkSpaceHeight: int
+  - trunkSpaceWidth: int
+  - carryingCapacity: int
+  + setCarryingCapacity(int): void
+  + getTrunkSpaceWidth(): int
+  + getCarryingCapacity(): int
+  + getTrunkSpaceHeight(): int
+  + isRented(): boolean
+  + isBooked(): boolean
+  + setTrunkSpaceHeight(int): void
+  + setTrunkSpaceWidth(int): void
+}
+class TrailerBuilder {
+  + TrailerBuilder(): 
+  - trunkSpaceWidth: int
+  - pricePerDay: Integer
+  - registrationPlate: String
+  - carryingCapacity: int
+  - make: String
+  - vehicleType: VehicleType
+  - brand: String
+  - trunkSpaceHeight: int
+  + setTrunkSpaceHeight(int): TrailerBuilder
+  + setCarryingCapacity(int): TrailerBuilder
+  + setBrand(String): TrailerBuilder
+  + createTrailer(): Trailer
+  + setPricePerDay(Integer): TrailerBuilder
+  + setMake(String): TrailerBuilder
+  + setTrunkSpaceWidth(int): TrailerBuilder
+  + setVehicleType(VehicleType): TrailerBuilder
+  + setRegistrationPlate(String): TrailerBuilder
+}
+class Van {
+  + Van(String, String, String, VehicleType, Integer, int, int, int, int): 
+  - hp: int
+  - trunkSpaceWidth: int
+  - carryingCapacity: int
+  - trunkSpaceHeight: int
+  + isBooked(): boolean
+  + getHp(): int
+  + isRented(): boolean
+  + getTrunkSpaceWidth(): int
+  + getCarryingCapacity(): int
+  + getTrunkSpaceHeight(): int
+}
+class VanBuilder {
+  + VanBuilder(): 
+  - make: String
+  - brand: String
+  - trunkSpaceHeight: int
+  - vehicleType: VehicleType
+  - trunkSpaceWidth: int
+  - registrationPlate: String
+  - pricePerDay: Integer
+  - carryingCapacity: int
+  - hp: int
+  + setBrand(String): VanBuilder
+  + setPricePerDay(Integer): VanBuilder
+  + setTrunkSpaceWidth(int): VanBuilder
+  + setHp(int): VanBuilder
+  + setMake(String): VanBuilder
+  + setCarryingCapacity(int): VanBuilder
+  + setRegistrationPlate(String): VanBuilder
+  + setTrunkSpaceHeight(int): VanBuilder
+  + createVan(): Van
+  + setVehicleType(VehicleType): VanBuilder
+}
+class Vehicle {
+  + Vehicle(String, String, String, VehicleType, Integer): 
+  - pricePerDay: Integer
+  - brand: String
+  - registrationPlate: String
+  - make: String
+  - vehicleType: VehicleType
+  + getMake(): String
+  + isBooked(): boolean
+  + isRented(): boolean
+  + getVehicleType(): VehicleType
+  + getPricePerDay(): Integer
+  + getBrand(): String
+  + getRegistrationPlate(): String
+}
+enum VehicleType << enumeration >> {
+  + VehicleType(): 
+  + TRAILER: 
+  + CAR: 
+  + VAN: 
+  + values(): VehicleType[]
+  + valueOf(String): VehicleType
+}
+
+Booking        "1" *-[#595959,plain]-> "client\n1" Client         
+Booking        "1" *-[#595959,plain]-> "vehicle\n1" Vehicle        
+Car             -[#000082,plain]-^  Vehicle        
+CarBuilder      -[#595959,dashed]->  Car            : "«create»"
+CarBuilder     "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType    
+Trailer         -[#000082,plain]-^  Vehicle        
+TrailerBuilder  -[#595959,dashed]->  Trailer        : "«create»"
+TrailerBuilder "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType    
+Van             -[#000082,plain]-^  Vehicle        
+VanBuilder      -[#595959,dashed]->  Van            : "«create»"
+VanBuilder     "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType    
+Vehicle        "1" *-[#595959,plain]-> "vehicleType\n1" VehicleType    
+@enduml
