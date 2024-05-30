@@ -59,16 +59,18 @@ public class ClientRepository {
         return clients;
     }
 
-    public void saveClient(Client client) {
-        String query = "INSERT INTO clients (phone_number, password, type) VALUES (?, ?, ?)";
+    public boolean saveClient(Client client) {
+        String query = "INSERT INTO clients (phone_number, password, type) VALUES (?, ?, ?::client_type)";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, client.phoneNumber());
             stmt.setString(2, client.password());
             stmt.setString(3, client.type().name());
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
