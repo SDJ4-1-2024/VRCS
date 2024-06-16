@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import org.example.controller.vehicle.addEdit.EditCarController;
 import org.example.controller.vehicle.addEdit.AddCarViewController;
 import org.example.model.vehicle.Car;
+import org.example.network.ClientRequestHandler;
 import org.example.repository.vehicle.VehicleRepository;
 import org.example.util.PopUpUtil;
 import org.example.viewmodel.vehicle.CarViewModel;
@@ -63,6 +64,19 @@ public class CarViewController {
             carsData.add(new CarViewModel(car));
         }
         carTable.setItems(carsData);
+    }
+    @FXML
+    private void localizeVehicle() {
+        CarViewModel selectedCar = carTable.getSelectionModel().getSelectedItem();
+        PopUpUtil.popUpInfo("Vehicle Localization", selectedCar.getRegistrationPlate() +
+                " location is: "+ClientRequestHandler.getResponse("getCoordinates"));
+    }
+
+    @FXML
+    private void resetVehicleLocation() {
+        CarViewModel selectedCar = carTable.getSelectionModel().getSelectedItem();
+        PopUpUtil.popUpInfo("Vehicle Localization", selectedCar.getRegistrationPlate() +
+                " location is: "+ClientRequestHandler.getResponse("resetCoordinates"));
     }
 
     @FXML
