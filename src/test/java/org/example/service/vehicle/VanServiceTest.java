@@ -13,7 +13,7 @@ import java.util.List;
 class VanServiceTest {
 
     @org.junit.jupiter.api.Test
-    void castVehiclesToCars() {
+    void castVehiclesToVans() {
         List<Vehicle> vehicles = new ArrayList<>(Collections.emptyList());
         Van fordTransit = new VanBuilder().setMake("Ford").setBrand("Transit").setVehicleType(VehicleType.VAN).setRegistrationPlate("TYU200").setCarryingCapacity(1500).setHp(210)
                 .setTrunkSpaceHeight(200).setTrunkSpaceWidth(180).setPricePerDay(85).createVan();

@@ -13,7 +13,10 @@ import javafx.stage.Stage;
 import org.example.controller.vehicle.addEdit.AddTrailerViewController;
 import org.example.controller.vehicle.addEdit.EditTrailerController;
 import org.example.model.vehicle.Trailer;
+import org.example.network.ClientRequestHandler;
 import org.example.repository.vehicle.VehicleRepository;
+import org.example.util.PopUpUtil;
+import org.example.viewmodel.vehicle.CarViewModel;
 import org.example.viewmodel.vehicle.TrailerViewModel;
 
 import java.io.IOException;
@@ -90,6 +93,20 @@ public class TrailerViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void localizeVehicle() {
+        TrailerViewModel selectedCar = trailerTable.getSelectionModel().getSelectedItem();
+        PopUpUtil.popUpInfo("Vehicle Localization", selectedCar.getRegistrationPlate() +
+                " location is: "+ ClientRequestHandler.getResponse("getCoordinates"));
+    }
+
+    @FXML
+    private void resetVehicleLocation() {
+        TrailerViewModel selectedCar = trailerTable.getSelectionModel().getSelectedItem();
+        PopUpUtil.popUpInfo("Vehicle Localization", selectedCar.getRegistrationPlate() +
+                " location is: "+ClientRequestHandler.getResponse("resetCoordinates"));
     }
 
     @FXML

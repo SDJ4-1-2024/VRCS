@@ -14,7 +14,10 @@ import javafx.stage.Stage;
 import org.example.controller.vehicle.addEdit.AddVanViewController;
 import org.example.controller.vehicle.addEdit.EditVanController;
 import org.example.model.vehicle.Van;
+import org.example.network.ClientRequestHandler;
 import org.example.repository.vehicle.VehicleRepository;
+import org.example.util.PopUpUtil;
+import org.example.viewmodel.vehicle.CarViewModel;
 import org.example.viewmodel.vehicle.VanViewModel;
 
 import java.io.IOException;
@@ -95,6 +98,20 @@ public class VanViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void localizeVehicle() {
+        VanViewModel selectedCar = vanTable.getSelectionModel().getSelectedItem();
+        PopUpUtil.popUpInfo("Vehicle Localization", selectedCar.getRegistrationPlate() +
+                " location is: "+ ClientRequestHandler.getResponse("getCoordinates"));
+    }
+
+    @FXML
+    private void resetVehicleLocation() {
+        VanViewModel selectedCar = vanTable.getSelectionModel().getSelectedItem();
+        PopUpUtil.popUpInfo("Vehicle Localization", selectedCar.getRegistrationPlate() +
+                " location is: "+ClientRequestHandler.getResponse("resetCoordinates"));
     }
 
     @FXML

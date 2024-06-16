@@ -12,7 +12,6 @@ public class ClientUtils {
         }
         return false;
     }
-
     public static String getPhoneNumber() {
         return Preferences.userRoot().get("phone", null);
     }

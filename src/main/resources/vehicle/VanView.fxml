@@ -21,6 +21,8 @@
         <Button text="Remove Selected Van" onAction="#removeVan"/>
         <Button text="Add Van" onAction="#addVan"/>
         <Button text="Edit Selected Van" onAction="#editVan"/>
+        <Button text="Localize Selected Car" onAction="#localizeVehicle"/>
+        <Button text="Reset location of Selected Car" onAction="#resetVehicleLocation"/>
     </HBox>
 </VBox>
 
